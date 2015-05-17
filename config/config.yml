@@ -1,0 +1,11 @@
+defaults: &defaults
+  audio_root: '/Users/alex/Music/iTunes/iTunes Media/Music'
+
+development:
+  <<: *defaults
+
+test:
+  <<: *defaults
+
+production:
+  <<: *defaults
