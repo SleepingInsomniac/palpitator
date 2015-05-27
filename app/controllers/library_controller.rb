@@ -8,7 +8,7 @@ class LibraryController < ApplicationController
       TagLib::FileRef.open(File.expand_path(file)) do |ref|
         tag = ref.tag
         
-        artist = Artist.where(name: (tag.artist || "Untitled Artist")).first_or_create
+        artist = Artist.where(name: (tag.artist.titleize || "Untitled Artist")).first_or_create
         album = Album.where(artist: artist, title: (tag.album || "Untitled Album")).first_or_create
         
         digest = Digest::MD5.hexdigest File.read file
@@ -18,6 +18,22 @@ class LibraryController < ApplicationController
       end
     end
     render json: {notice: 'done'}
+  end
+  
+  def search
+    term = params[:term] || ""
+    term = "%#{term}%"
+    
+    @song_results   =   Song.where("title LIKE ?", term).limit(10)
+    @artist_results = Artist.where("name LIKE ?", term).limit(10)
+    @album_results  =  Album.where("title LIKE ?", term).limit(10)
+    
+    render json: {
+      songs: @song_results,
+      artists: @artist_results,
+      albums: @album_results
+    }
+    
   end
   
 end

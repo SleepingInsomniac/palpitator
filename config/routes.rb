@@ -12,7 +12,9 @@ Rails.application.routes.draw do
   resources :artists, except: [:new, :edit] do
     resources :albums, excpet: [:new, :edit]
   end
-  get 'library/update'
+  patch 'library/update'
+  get 'library/search'
+  
   root 'home#index'
 
   # The priority is based upon order of creation: first created -> highest priority.

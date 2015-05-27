@@ -3,6 +3,62 @@
  *= require_self
  */
 
-body {
-    
+* {
+    box-sizing: border-box;
+    font-family: helvetica, sans-serif;
 }
+
+body {
+    padding: 0;
+    margin: 0;
+}
+
+input {
+    border: 1px solid #CCC;
+    border-radius: 3px;
+    padding: 10px;
+    
+    &[type=text] {
+        
+        &:focus {
+            outline: none;
+            box-shadow: 0 0 10px rgba(0,155,255,0.5);
+        }
+    }
+}
+
+button.artist {
+    border: none;
+    width: 100%;
+    height: 100%;
+    background-color: #EFEFEF;
+    padding: 10px;
+    text-align: left;
+    font-size: 1em;
+}
+
+ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+.search {
+    padding: 10px;
+}
+
+section {
+    padding: 10px;
+    width: 25%;
+    display: inline-block;
+    border-right: 1px solid rgba(0,0,0,0.3);
+    vertical-align: top;
+    
+    ul {
+        li {
+            border-bottom: 1px solid rgba(0,0,0,0.2);
+            padding: 0px;
+        }
+    }
+}
+
