@@ -5,25 +5,49 @@
   <%= stylesheet_link_tag    'application', media: 'all' %>
   <%= javascript_include_tag 'application' %>
 </head>
-<body ng-controller="ArtistsController">
-  <div class="search">
-    <input type="text" ng-model="search" placeholder="Search" autofocus>
+<body>
+  <div ng-controller="AppController">
+    <header>
+      <div class="controls">
+      
+      </div>
+      
+    </header>
+        
+    <section class="artists">
+      <div class="search">
+        <input type="search" ng-model="artistSearch" placeholder="Search Artists" autofocus>
+      </div>
+      <ul>
+        <li ng-repeat="artist in artists | filter: artistSearch">
+          <button class="artist" id="artist-{{artist.id}}" ng-click="getAlbums(artist.id)">{{ artist.name }}</button>
+        </li>
+      </ul>
+    </section>
+    
+    <section class="albums">
+      <div class="search">
+        <input type="search" ng-model="albumSearch" placeholder="Search Albums" autofocus>
+      </div>
+      <ul>
+        <li ng-repeat="album in albums | filter: albumSearch">
+          <button class="album" id="album-{{album.id}}" ng-click="getSongs(album.id)">{{ album.title }}</button>
+        </li>
+      </ul>
+    </section>
+    
+    <section class="songs">
+      <div class="search">
+        <input type="search" ng-model="songSearch" placeholder="Search Songs" autofocus>
+      </div>
+      <ul>
+        <li ng-repeat="song in songs | filter: songSearch">
+          <button class="song" id="song-{{album.id}}">{{ song.title }}</button>
+        </li>
+      </ul>
+    </section>
+    
   </div>
-  <section class="artists">
-    <ul>
-      <li ng-repeat="artist in artists | filter: search">
-        <button class="artist" id="artist-{{artist.id}}" ng-click="getAlbums(artist.id)">{{ artist.name }}</button>
-      </li>
-    </ul>
-  </section>
-  <section class="albums">
-    <!-- <p ng-click="test = 'blah'">Thing: {{ test }}</p> -->
-    <ul>
-      <li ng-repeat="album in albums">
-        <button class="album" id="album-{{album.id}}">{{ album.title }}</button>
-      </li>
-    </ul>
-  </section>
 </body>
 </html>
  

@@ -17,8 +17,15 @@ input {
     border: 1px solid #CCC;
     border-radius: 3px;
     padding: 10px;
+    outline: none;
     
-    &[type=text] {
+    &:focus {
+        outline: none;
+    }
+    
+    &[type=search] {
+        
+        width: 100%;
         
         &:focus {
             outline: none;
@@ -27,14 +34,23 @@ input {
     }
 }
 
-button.artist {
+li button {
     border: none;
     width: 100%;
     height: 100%;
     background-color: #EFEFEF;
     padding: 10px;
     text-align: left;
-    font-size: 1em;
+    font-size: 0.85em;
+    
+    &:hover {
+        cursor: pointer;
+        background-color: #FFF;
+    }
+    
+    &:active {
+        background-color: #444;
+    }
 }
 
 ul {
@@ -43,16 +59,20 @@ ul {
     margin: 0;
 }
 
-.search {
-    padding: 10px;
+header {
+    height: 20vh;
+    background-color: #F5F5F5;
 }
 
 section {
+    position: relative;
     padding: 10px;
     width: 25%;
     display: inline-block;
     border-right: 1px solid rgba(0,0,0,0.3);
     vertical-align: top;
+    height: 80vh;
+    overflow-y: scroll;
     
     ul {
         li {
@@ -62,3 +82,11 @@ section {
     }
 }
 
+.search {
+    position: relative;
+//    position: fixed;
+//    width: 100%;
+    input {
+//        position: fixed;
+    }
+}

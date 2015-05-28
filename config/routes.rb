@@ -11,6 +11,7 @@ Rails.application.routes.draw do
   end
   resources :artists, except: [:new, :edit] do
     resources :albums, excpet: [:new, :edit]
+    resources :songs, excpet: [:new, :edit]
   end
   patch 'library/update'
   get 'library/search'

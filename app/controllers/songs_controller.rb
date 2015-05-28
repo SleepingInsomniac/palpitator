@@ -20,6 +20,8 @@ private
   def set_base
     if params[:album_id].present?
       @songs = Album.find(params[:album_id]).songs
+    elsif params[:artist_id].present?
+      @songs = Artist.find(params[:artist_id]).songs
     else
       @songs = Song.all
     end
