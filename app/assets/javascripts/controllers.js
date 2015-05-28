@@ -1,26 +1,38 @@
-var pulpApp = angular.module('pulpApp', []);
-
-pulpApp.controller('ArtistsController', function($scope, $http) {
+(function(pt) {
+    "use strict";
     
-    $http.get('/artists').success(function(data) {
-        $scope.artists = data;
-    });
-    
-    // $http.get('/artists/1/albums').success(function(data) {
-    //     $scope.albums = data;
-    // });
-    
-    $scope.getAlbums = function(id) {
-        $http.get('/artists/'+id+'/albums').success(function(data) {
-            $scope.albums = data;
-        });
+    // =======================
+    // = Main app controller =
+    // =======================
+    function AppController() {
+        
+        function construct() {
+            
+        }
+        
+        
+        construct.apply(this, arguments); // call constructor function to set up object.
     }
+    pt.AppController = AppController;
     
-});
-
-// pulpApp.controller('AlbumsController', function($scope) {
-//
-//
-//
-//
-// });
+    
+    
+    // =================================
+    // = Control the RESTful resources =
+    // =================================
+    function ResourceController() {
+        
+        // private
+        function construct() {
+            
+        }
+        
+        // public
+        
+        
+        // call constructor function to set up object.
+        construct.apply(this, arguments);
+    }
+    pt.ResourceController = ResourceController;
+        
+}(pt = window.pt || {}));
