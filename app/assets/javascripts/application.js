@@ -1,3 +1,2 @@
-//= require Lx-dev.js
+//= require angular.js
 //= require controllers.js
-//= require models.js
