@@ -1,4 +1,5 @@
 class SongsController < ApplicationController
+  
   before_action :set_base
   before_action :set_song, only: [:show, :update, :destroy]
 
@@ -34,4 +35,5 @@ private
   def song_params
     params.require(:song).permit(:track, :title, :length, :album_id, :artist_id)
   end
+  
 end

@@ -2,6 +2,11 @@ var pulpApp = angular.module('pulpApp', []);
 
 pulpApp.controller('AppController', function($scope, $http) {
     
+    $scope.artists = [];
+    $scope.albums = [];
+    $scope.songs = [];
+    $scope.playlist = [];
+    
     $http.get('/artists').success(function(data) {
         $scope.artists = data;
     });
@@ -19,6 +24,10 @@ pulpApp.controller('AppController', function($scope, $http) {
         $http.get('/albums/'+id+'/songs').success(function(data) {
             $scope.songs = data;
         });
+    }
+    
+    $scope.addToPlaylist = function(song) {
+        $scope.playlist.push(song);
     }
     
 });

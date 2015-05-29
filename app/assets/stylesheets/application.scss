@@ -3,6 +3,8 @@
  *= require_self
  */
 
+@import 'mixins';
+
 * {
     box-sizing: border-box;
     font-family: helvetica, sans-serif;
@@ -23,7 +25,7 @@ input {
         outline: none;
     }
     
-    &[type=search] {
+    &[type=text] {
         
         width: 100%;
         
@@ -42,6 +44,8 @@ li button {
     padding: 10px;
     text-align: left;
     font-size: 0.85em;
+    
+    @include transition(0.3s, ease-in-out);
     
     &:hover {
         cursor: pointer;
@@ -64,29 +68,58 @@ header {
     background-color: #F5F5F5;
 }
 
+.selects {
+    position: relative;
+//    background-color: gray;
+}
+
 section {
     position: relative;
-    padding: 10px;
+    padding: 0px;
+    margin: 0;
     width: 25%;
-    display: inline-block;
+//    display: inline-block;
+    float: left;
     border-right: 1px solid rgba(0,0,0,0.3);
     vertical-align: top;
     height: 80vh;
     overflow-y: scroll;
+//    overflow-x: hidden;
     
     ul {
+        margin: 0;
+        padding: 0;
+        
         li {
             border-bottom: 1px solid rgba(0,0,0,0.2);
             padding: 0px;
+            margin: 0;
         }
     }
 }
 
 .search {
-    position: relative;
-//    position: fixed;
-//    width: 100%;
+    position: -webkit-sticky;
+    position: -moz-sticky;
+    position: -ms-sticky;
+    position: -o-sticky;
+    top: 0px;
+    
     input {
+        border: none;
+        border-radius: 0;
+//        width: 25%;
+        margin: 0;
+        background-color: rgba(255,255,255,0.9);
 //        position: fixed;
+        &:focus {
+            background-color: #FFF;
+        }
     }
+}
+
+hr.clear {
+    clear: both;
+    height: 0;
+    border: 0;
 }
