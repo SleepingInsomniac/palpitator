@@ -10,9 +10,29 @@
     font-family: helvetica, sans-serif;
 }
 
-body {
+html, body {
     padding: 0;
     margin: 0;
+    height: 100%;
+    width: 100%;
+}
+
+body {
+    overflow: hidden;
+}
+
+[draggable] {
+    -moz-user-select: none;
+    -khtml-user-select: none;
+    -webkit-user-select: none;
+    user-select: none;
+    /* Required to make elements draggable in old WebKit */
+    -khtml-user-drag: element;
+    -webkit-user-drag: element;
+}
+
+audio {
+    width: 100%;
 }
 
 input {
@@ -66,6 +86,11 @@ ul {
 header {
     height: 20vh;
     background-color: #F5F5F5;
+    padding-top: 10px;
+}
+
+.artistInfo {
+    text-align: center;
 }
 
 .selects {
@@ -96,13 +121,30 @@ section {
             margin: 0;
         }
     }
+    
+    ol {
+        
+        li {
+            position: relative;
+            
+            button {
+//                width: 85%;
+
+                &.remove {
+                    position: absolute;
+                    right: 0;
+                    top: 0;
+                    width: 10%;
+                    text-align: center;
+                    border-left: 1px solid rgba(0,0,0,0.1);
+                }
+            }
+        }
+    }
 }
 
 .search {
-    position: -webkit-sticky;
-    position: -moz-sticky;
-    position: -ms-sticky;
-    position: -o-sticky;
+    @include position-sticky;
     top: 0px;
     
     input {

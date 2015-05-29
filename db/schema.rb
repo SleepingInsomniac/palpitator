@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150517151019) do
+ActiveRecord::Schema.define(version: 20150529021022) do
 
   create_table "albums", force: :cascade do |t|
     t.string   "title",      default: "Untitled Album", null: false
@@ -58,6 +58,7 @@ ActiveRecord::Schema.define(version: 20150517151019) do
     t.datetime "created_at",                           null: false
     t.datetime "updated_at",                           null: false
     t.integer  "play_count", default: 0,               null: false
+    t.string   "extension"
   end
 
   add_index "songs", ["album_id"], name: "index_songs_on_album_id"

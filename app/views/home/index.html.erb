@@ -6,7 +6,14 @@
   <%= javascript_include_tag 'application' %>
 </head>
 <body ng-controller="AppController">
-  <header>
+  <header ng-model="currentSong">
+    <audio ng-show="currentSong" src="{{ '/songs/'+currentSong.id+'/play'+currentSong.extension }}" controls autoplay></audio>
+    <div id="nowPlaying">
+      <div class="artistInfo">
+        <span>{{ currentSong.title || "nothing pulpitating" }}</span>
+        <!-- <span>{{ currentSong.length }}</span> -->
+      </div>
+    </div>
     <div class="controls">
       
     </div>
@@ -16,16 +23,20 @@
   <div class="selects">
     
     <section class="playlist">
+      <div class="playlistControls">
+        <button ng-click="clearPlaylist()">Clear</button>
+      </div>
       <ol>
-        <li ng-repeat="song in playlist track by $index">
-          <button class="song" id="song-{{song.id}}">{{ song.title }}</button>
+        <li ng-repeat="song in playlist track by $index" draggable="true">
+          <button class="song" ng-click="playSong(song)">{{ song.title }}</button>
+          <button class="remove" ng-click="removeFromPlaylist(song)">x</button>
         </li>
       </ol>
     </section>
     
     <section class="artists">
       <div class="search">
-        <input type="text" ng-model="artistSearch" placeholder="Search Artists" autofocus>
+        <input type="text" ng-model="artistSearch" placeholder="Search Artists" autofocus tabindex="1">
       </div>
       <ul>
         <li ng-repeat="artist in artists | filter: artistSearch">
@@ -36,7 +47,7 @@
   
     <section class="albums">
       <div class="search">
-        <input type="text" ng-model="albumSearch" placeholder="Search Albums" autofocus>
+        <input type="text" ng-model="albumSearch" placeholder="Search Albums" tabindex="2">
       </div>
       <ul>
         <li ng-repeat="album in albums | filter: albumSearch">
@@ -47,7 +58,7 @@
   
     <section class="songs">
       <div class="search">
-        <input type="text" ng-model="songSearch" placeholder="Search Songs" autofocus>
+        <input type="text" ng-model="songSearch" placeholder="Search Songs" tabindex="3">
       </div>
       <ul>
         <li ng-repeat="song in songs | filter: songSearch">

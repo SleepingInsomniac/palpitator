@@ -5,3 +5,11 @@
          -o-transition: $timing $func;
             transition: $timing $func;
 }
+
+@mixin position-sticky {
+    position: -webkit-sticky;
+    position: -moz-sticky;
+    position: -ms-sticky;
+    position: -o-sticky;
+    position: sticky;
+}

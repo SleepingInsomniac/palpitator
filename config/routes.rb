@@ -5,6 +5,9 @@ Rails.application.routes.draw do
     collection do
       get 'random'
     end
+    member do
+      get 'play'
+    end
   end
   resources :albums, except: [:new, :edit] do
     resources :songs, except: [:new, :edit]
