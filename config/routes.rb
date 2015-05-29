@@ -5,12 +5,16 @@ Rails.application.routes.draw do
     collection do
       get 'random'
     end
+    member do
+      get 'play'
+    end
   end
   resources :albums, except: [:new, :edit] do
     resources :songs, except: [:new, :edit]
   end
   resources :artists, except: [:new, :edit] do
     resources :albums, excpet: [:new, :edit]
+    resources :songs, excpet: [:new, :edit]
   end
   patch 'library/update'
   get 'library/search'

@@ -1,0 +1,15 @@
+@mixin transition($timing, $func) {
+    -webkit-transition: $timing $func;
+       -moz-transition: $timing $func;
+        -ms-transition: $timing $func;
+         -o-transition: $timing $func;
+            transition: $timing $func;
+}
+
+@mixin position-sticky {
+    position: -webkit-sticky;
+    position: -moz-sticky;
+    position: -ms-sticky;
+    position: -o-sticky;
+    position: sticky;
+}

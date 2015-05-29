@@ -5,25 +5,72 @@
   <%= stylesheet_link_tag    'application', media: 'all' %>
   <%= javascript_include_tag 'application' %>
 </head>
-<body ng-controller="ArtistsController">
-  <div class="search">
-    <input type="text" ng-model="search" placeholder="Search" autofocus>
+<body ng-controller="AppController">
+  <header ng-model="currentSong">
+    <audio ng-show="currentSong" src="{{ '/songs/'+currentSong.id+'/play'+currentSong.extension }}" controls autoplay></audio>
+    <div id="nowPlaying">
+      <div class="artistInfo">
+        <span>{{ currentSong.title || "nothing pulpitating" }}</span>
+        <!-- <span>{{ currentSong.length }}</span> -->
+      </div>
+    </div>
+    <div class="controls">
+      
+    </div>
+    
+  </header>
+  
+  <div class="selects">
+    
+    <section class="playlist">
+      <div class="playlistControls">
+        <button ng-click="clearPlaylist()">Clear</button>
+      </div>
+      <ol>
+        <li ng-repeat="song in playlist track by $index" draggable="true">
+          <button class="song" ng-click="playSong(song)">{{ song.title }}</button>
+          <button class="remove" ng-click="removeFromPlaylist(song)">x</button>
+        </li>
+      </ol>
+    </section>
+    
+    <section class="artists">
+      <div class="search">
+        <input type="text" ng-model="artistSearch" placeholder="Search Artists" autofocus tabindex="1">
+      </div>
+      <ul>
+        <li ng-repeat="artist in artists | filter: artistSearch">
+          <button class="artist" id="artist-{{artist.id}}" ng-click="getAlbums(artist.id)">{{ artist.name }}</button>
+        </li>
+      </ul>
+    </section>
+  
+    <section class="albums">
+      <div class="search">
+        <input type="text" ng-model="albumSearch" placeholder="Search Albums" tabindex="2">
+      </div>
+      <ul>
+        <li ng-repeat="album in albums | filter: albumSearch">
+          <button class="album" id="album-{{album.id}}" ng-click="getSongs(album.id)">{{ album.title }}</button>
+        </li>
+      </ul>
+    </section>
+  
+    <section class="songs">
+      <div class="search">
+        <input type="text" ng-model="songSearch" placeholder="Search Songs" tabindex="3">
+      </div>
+      <ul>
+        <li ng-repeat="song in songs | filter: songSearch">
+          <button class="song" id="song-{{song.id}}" ng-click="addToPlaylist(song)">{{ song.title }}</button>
+        </li>
+      </ul>
+    </section>
+    
+    <hr class="clear">
   </div>
-  <section class="artists">
-    <ul>
-      <li ng-repeat="artist in artists | filter: search">
-        <button class="artist" id="artist-{{artist.id}}" ng-click="getAlbums(artist.id)">{{ artist.name }}</button>
-      </li>
-    </ul>
-  </section>
-  <section class="albums">
-    <!-- <p ng-click="test = 'blah'">Thing: {{ test }}</p> -->
-    <ul>
-      <li ng-repeat="album in albums">
-        <button class="album" id="album-{{album.id}}">{{ album.title }}</button>
-      </li>
-    </ul>
-  </section>
+  
+  <footer></footer>
 </body>
 </html>
  
