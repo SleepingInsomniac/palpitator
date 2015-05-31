@@ -7,11 +7,11 @@
 }
 
 @mixin position-sticky($where, $pos) {
-    position: sticky;
     position: -webkit-sticky;
     position: -moz-sticky;
     position: -ms-sticky;
     position: -o-sticky;
+    position: sticky;
     
     $where: $pos;
 }

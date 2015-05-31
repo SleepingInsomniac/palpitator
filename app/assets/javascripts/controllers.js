@@ -59,11 +59,6 @@ pulpApp.controller('AppController', function($scope, $http) {
         });
     }
     
-    // $scope.data.artists     = [];
-    // $scope.data.albums      = [];
-    // $scope.data.songs       = [];
-    // $scope.playlist.songs    = [];
-    
     // initial load
     $http.get('/artists').success(function(data) {
         $scope.data.artists = data;
@@ -115,7 +110,6 @@ pulpApp.controller('AppController', function($scope, $http) {
     }
     
     Lx(window).on('keypress', function(e) {
-        console.log(e);
         if (e.keyCode == 32) {
             $scope.player.togglePlay();
             $scope.$apply();

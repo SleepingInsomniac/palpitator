@@ -55,7 +55,7 @@
       </div>
       <ul>
         <li ng-repeat="artist in data.artists | filter: artistSearch">
-          <button ng-class="artist == selected.artist ? 'selected' : ''" class="artist" id="artist-{{artist.id}}" ng-click="getAlbums(artist.id)">{{ artist.name }}</button>
+          <button ng-class="artist == selected.artist ? 'selected' : ''" class="artist" ng-click="getAlbums(artist.id)">{{ artist.name }}</button>
         </li>
       </ul>
     </section>
@@ -66,7 +66,7 @@
       </div>
       <ul>
         <li ng-repeat="album in data.albums | filter: albumSearch">
-          <button ng-class="album == selected.album ? 'selected' : ''" class="album" id="album-{{album.id}}" ng-click="getSongs(album.id)">{{ album.title }}</button>
+          <button ng-class="album == selected.album ? 'selected' : ''" class="album" ng-click="getSongs(album.id)">{{ album.title }}</button>
           <button class="addAlbum" ng-click="addAlbum(album)">+</button>
         </li>
       </ul>
@@ -78,7 +78,7 @@
       </div>
       <ul>
         <li ng-repeat="song in data.songs | filter: songSearch">
-          <button class="song" id="song-{{song.id}}" ng-click="playlist.add(song)">{{ song.title }}</button>
+          <button class="song" ng-click="playlist.add(song)">{{ song.title }}</button>
         </li>
       </ul>
     </section>
