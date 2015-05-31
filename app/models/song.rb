@@ -3,4 +3,5 @@ class Song < ActiveRecord::Base
   has_one :artist, through: :album
   has_many :listings
   has_many :playlists, through: :listings
+  default_scope { order(:track) }
 end

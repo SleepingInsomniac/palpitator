@@ -25,14 +25,11 @@ pulpApp.controller('AppController', function($scope, $http) {
         songs: [],
         selected: null,
         add: function(song) {
-            $http.get('/songs/'+song.id).success(function(data) {
-                song = data
-                $scope.playlist.songs.push(song);
-                if ($scope.playlist.songs.length == 1) {
-                    $scope.selected.song = $scope.playlist.songs[0];
-                    $scope.player.playing = true;
-                }
-            });
+            $scope.playlist.songs.push(song);
+            if ($scope.playlist.songs.length == 1) {
+                $scope.selected.song = $scope.playlist.songs[0];
+                $scope.player.playing = true;
+            }
         },
         remove: function (song) {
             var index = $scope.playlist.songs.indexOf(song);
