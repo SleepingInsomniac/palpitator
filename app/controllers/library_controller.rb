@@ -4,9 +4,11 @@ require 'digest/md5'
 class LibraryController < ApplicationController
   def update
     audio_root = APP_CONFIG['audio_root']
+    not_added = []
     Dir[File.join(audio_root, "**", "*")].reject { |d| File.directory? d }.each do |file|
       TagLib::FileRef.open(File.expand_path(file)) do |ref|
-        tag = ref.tag
+        tag = ref.tagq
+        not_added << file and next unless tag
         
         artist = Artist.where(name: (tag.artist || "Untitled Artist").titleize).first_or_create
         album = Album.where(artist: artist, title: (tag.album || "Untitled Album")).first_or_create
@@ -24,7 +26,10 @@ class LibraryController < ApplicationController
         song.save
       end
     end
-    render json: {notice: 'done'}
+    render json: {
+      notice: 'done',
+      errors: not_added
+    }
   end
   
   def search
