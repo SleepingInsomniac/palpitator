@@ -129,6 +129,13 @@
 			elm.parentNode.insertBefore(this.subject, elm);
 			return this;
 		},
+        
+		insertAfter: function(elm) {
+			if (elm instanceof Lx) elm = elm.subject;
+			elm.parentNode.insertBefore(this.subject, elm);
+            elm.parentNode.insertBefore(elm, this.subject);
+			return this;
+		},
 		
 		replaceChild: function(elm, newElm) {
 			if (elm instanceof Lx) elm = elm.subject;

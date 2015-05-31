@@ -1,15 +1,40 @@
 @mixin transition($timing, $func) {
+            transition: $timing $func;
     -webkit-transition: $timing $func;
        -moz-transition: $timing $func;
         -ms-transition: $timing $func;
          -o-transition: $timing $func;
-            transition: $timing $func;
 }
 
-@mixin position-sticky {
+@mixin position-sticky($where, $pos) {
+    position: sticky;
     position: -webkit-sticky;
     position: -moz-sticky;
     position: -ms-sticky;
     position: -o-sticky;
-    position: sticky;
+    
+    $where: $pos;
+}
+
+@mixin unselectable {
+    -webkit-user-select: none;
+     -khtml-user-select: none;
+       -moz-user-select: none;
+        -ms-user-select: none;
+         -o-user-select: none;
+            user-select: none;
+            
+//    -webkit-user-focus: ignore;
+//       -moz-user-focus: ignore;
+//        -ms-user-focus: ignore;
+//         -o-user-focus: ignore;
+//            user-focus: ignore;
+}
+
+@mixin translateY($pos) {
+    -webkit-transform: translateY($pos);
+       -moz-transform: translateY($pos);
+        -ms-transform: translateY($pos);
+         -o-transform: translateY($pos);
+            transform: translateY($pos);
 }

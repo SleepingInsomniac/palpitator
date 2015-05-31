@@ -6,30 +6,44 @@
   <%= javascript_include_tag 'application' %>
 </head>
 <body ng-controller="AppController">
-  <header ng-model="currentSong">
-    <audio ng-show="currentSong" src="{{ '/songs/'+currentSong.id+'/play'+currentSong.extension }}" controls autoplay></audio>
+  <header ng-model="selected.song">
+    <audio id="player" player ng-show="selected.song" ng-attr-type="{{ 'audio/'+selected.song.extension.slice(1) }}" ng-attr-src="{{ selected.song && '/songs/'+selected.song.id+'/play'+selected.song.extension }}" preload autoplay>
+      Sorry, your browser sucks.
+    </audio>
+    
     <div id="nowPlaying">
       <div class="artistInfo">
-        <span>{{ currentSong.title || "nothing pulpitating" }}</span>
-        <!-- <span>{{ currentSong.length }}</span> -->
+        <span>{{ selected.song.title || "nothing pulpitating" }}</span>
+        <!-- <span>{{ selected.song.length }}</span> -->
+      </div>
+      <div class="controls">
+        <button ng-click="player.prevSong()">Prev</button>
+        <button ng-click="player.togglePlay()" ng-class="player.playing ? 'playing':''" id="play">&#9654;</button>
+        <button ng-click="player.nextSong()">Next</button>
       </div>
     </div>
-    <div class="controls">
-      
+    
+    <div id="timeline">
+      <div id="progressbar">
+        <div id="playhead"></div>
+      </div>
     </div>
     
   </header>
   
-  <div class="selects">
+  <div class="sections">
     
     <section class="playlist">
       <div class="playlistControls">
-        <button ng-click="clearPlaylist()">Clear</button>
+        <button ng-click="playlist.clear()">Clear</button>
       </div>
       <ol>
-        <li ng-repeat="song in playlist track by $index" draggable="true">
-          <button class="song" ng-click="playSong(song)">{{ song.title }}</button>
-          <button class="remove" ng-click="removeFromPlaylist(song)">x</button>
+        <li ng-repeat="song in playlist.songs track by $index" ng-class="song == selected.song ? 'playing' : ''" draggable="true">
+          <button class="song" ng-click="player.playSong(song)">
+            {{ song.title }}
+          </button>
+          <button class="remove" ng-click="playlist.remove(song)">x</button>
+          <hr class="clear">
         </li>
       </ol>
     </section>
@@ -39,7 +53,7 @@
         <input type="text" ng-model="artistSearch" placeholder="Search Artists" autofocus tabindex="1">
       </div>
       <ul>
-        <li ng-repeat="artist in artists | filter: artistSearch">
+        <li ng-repeat="artist in data.artists | filter: artistSearch" ng-class="artist == selected.artist ? 'selected' : ''">
           <button class="artist" id="artist-{{artist.id}}" ng-click="getAlbums(artist.id)">{{ artist.name }}</button>
         </li>
       </ul>
@@ -50,7 +64,7 @@
         <input type="text" ng-model="albumSearch" placeholder="Search Albums" tabindex="2">
       </div>
       <ul>
-        <li ng-repeat="album in albums | filter: albumSearch">
+        <li ng-repeat="album in data.albums | filter: albumSearch" ng-class="album == selected.album ? 'selected' : ''">
           <button class="album" id="album-{{album.id}}" ng-click="getSongs(album.id)">{{ album.title }}</button>
         </li>
       </ul>
@@ -61,8 +75,8 @@
         <input type="text" ng-model="songSearch" placeholder="Search Songs" tabindex="3">
       </div>
       <ul>
-        <li ng-repeat="song in songs | filter: songSearch">
-          <button class="song" id="song-{{song.id}}" ng-click="addToPlaylist(song)">{{ song.title }}</button>
+        <li ng-repeat="song in data.songs | filter: songSearch">
+          <button class="song" id="song-{{song.id}}" ng-click="playlist.add(song)">{{ song.title }}</button>
         </li>
       </ul>
     </section>
