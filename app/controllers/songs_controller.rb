@@ -4,16 +4,19 @@ class SongsController < ApplicationController
   before_action :set_song, only: [:show, :update, :destroy, :play]
 
   def index
-    render json: @songs
+    # render json: @songs
+    render 'index.json'
   end
 
   def show
-    render json: @song
+    # render json: @song
+    render 'show.json'
   end
   
   def random
     @song = @songs.where("id >= ?", rand(0..Song.count)).first
-    render json: @song
+    # render json: @song
+    render 'show.json'
   end
   
   def play

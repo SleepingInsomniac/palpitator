@@ -25,11 +25,14 @@ pulpApp.controller('AppController', function($scope, $http) {
         songs: [],
         selected: null,
         add: function(song) {
-            $scope.playlist.songs.push(song);
-            if ($scope.playlist.songs.length == 1) {
-                $scope.selected.song = $scope.playlist.songs[0];
-                $scope.player.playing = true;
-            }
+            $http.get('/songs/'+song.id).success(function(data) {
+                song = data
+                $scope.playlist.songs.push(song);
+                if ($scope.playlist.songs.length == 1) {
+                    $scope.selected.song = $scope.playlist.songs[0];
+                    $scope.player.playing = true;
+                }
+            });
         },
         remove: function (song) {
             var index = $scope.playlist.songs.indexOf(song);
@@ -46,6 +49,14 @@ pulpApp.controller('AppController', function($scope, $http) {
             $scope.player.playing = false;
             $scope.playlist.songs = [];
         }
+    }
+    
+    $scope.addAlbum = function(album) {
+        $http.get('/albums/'+album.id+'/songs').success(function(data) {
+            for (var i in data) {
+                $scope.playlist.add(data[i]);
+            }
+        });
     }
     
     // $scope.data.artists     = [];
@@ -86,6 +97,8 @@ pulpApp.controller('AppController', function($scope, $http) {
         var index = $scope.playlist.songs.indexOf($scope.selected.song);
         if (index < $scope.playlist.songs.length) {
             $scope.selected.song = $scope.playlist.songs[index+1];
+        } else {
+            $scope.player.playing = false;
         }
     }
     
@@ -108,6 +121,7 @@ pulpApp.controller('AppController', function($scope, $http) {
             $scope.$apply();
             e.stopPropagation();
             e.preventDefault();
+            return false;
         }
     });
     
@@ -127,20 +141,19 @@ pulpApp.directive('draggable', function() {
     return function($scope, element) {
         element.bind('dragstart', function(e) {
             Lx(this).addClass('dragging');
-            var clone = {};
             $scope.selected.draggingSong = $scope.song;
         });
 
         element.bind('dragover', function(e) {
             var dim = this.getBoundingClientRect();
             
-            // if (e.pageY > dim.top + (dim.height / 2)) {
+            if (e.pageY > dim.top + (dim.height / 2)) {
                 dragProxy.insertBefore(this);
                 overSong = $scope.song;
-            // } else {
-            //     dragProxy.insertAfter(this);
-            //     overSong = $scope.song;
-            // }
+            } else {
+                dragProxy.insertAfter(this);
+                overSong = $scope.song;
+            }
         });
         
         element.bind('dragend', function(e) {
@@ -157,19 +170,21 @@ pulpApp.directive('draggable', function() {
             var dim = this.getBoundingClientRect();
             
             var index = $scope.playlist.songs.indexOf(overSong) -1;
-            if (index < 1) index = 0;
             // console.log($scope.song, $scope.selected.draggingSong);
             // console.log($scope.playlist.songs);
             $scope.playlist.songs.splice($scope.playlist.songs.indexOf($scope.selected.draggingSong), 1);
-            $scope.playlist.songs.splice(index, 0, $scope.selected.draggingSong);
+            $scope.$apply();
+            
+            if (index < 1) index = 0;
+            if (index > $scope.playlist.songs.length) index = $scope.playlist.songs.length;
+            if (e.pageY > dim.top + (dim.height / 2)) {
+                $scope.playlist.songs.splice(index+1, 0, $scope.selected.draggingSong);
+            } else {
+                $scope.playlist.songs.splice(index, 0, $scope.selected.draggingSong);
+            }
+            
             $scope.$apply();
             // console.log($scope.playlist.songs);
-            
-            if (e.pageY > dim.top + (dim.height / 2)) {
-                
-            } else {
-                
-            }
         });
         
     }
