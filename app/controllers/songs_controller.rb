@@ -23,13 +23,19 @@ class SongsController < ApplicationController
     
     file_begin = 0
     file_size = File.size(@song.path)
-    file_end = file_size - 1
-
+    file_end = file_size
+    
+    # logger.info "----------------------------"
+    # request.headers.each do |name, content|
+    #   logger.info "#{name}: #{content}"
+    # end
+    # logger.info "----------------------------"
+    
     if !request.headers["Range"]
       status_code = 200 # "200 OK"
     else
       status_code = 206 # "206 Partial Content"
-      match = request.headers['range'].match(/bytes=(\d+)-(\d*)/)
+      match = request.headers['Range'].match(/bytes=(\d+)-(\d*)/)
       if match
         file_begin = match[1]
         file_end = match[1] if match[2] && !match[2].empty?
@@ -38,7 +44,6 @@ class SongsController < ApplicationController
     end
 
     response.header["Content-Length"] = (file_end.to_i - file_begin.to_i + 1).to_s
-    # response.header['Content-Length'] = file_size.to_s
     response.header["Last-Modified"] = @song.updated_at.to_s
 
     response.header["Cache-Control"] = "public, must-revalidate, max-age=0"
@@ -52,7 +57,13 @@ class SongsController < ApplicationController
       :status => status_code,
       :stream =>  'true',
       :buffer_size  =>  2048)
-    
+      
+    # logger.info "----------------------------"
+    # response.headers.each do |name, content|
+    #   logger.info "#{name}: #{content}"
+    # end
+    # logger.info "----------------------------"
+      
   end
   
 private
