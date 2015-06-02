@@ -20,21 +20,21 @@ class SongsController < ApplicationController
   end
   
   def play
-    
-    file_begin = 0
-    file_size = File.size(@song.path)
-    file_end = file_size
-    
+
     # logger.info "----------------------------"
     # request.headers.each do |name, content|
     #   logger.info "#{name}: #{content}"
     # end
     # logger.info "----------------------------"
     
+    file_begin = 0
+    file_size = File.size(@song.path)
+    file_end = file_size - 1
+
     if !request.headers["Range"]
-      status_code = 200 # "200 OK"
+      status_code = "200 OK"
     else
-      status_code = 206 # "206 Partial Content"
+      status_code = "206 Partial Content"
       match = request.headers['Range'].match(/bytes=(\d+)-(\d*)/)
       if match
         file_begin = match[1]
@@ -51,19 +51,24 @@ class SongsController < ApplicationController
     response.header["Accept-Ranges"] = "bytes"
     response.header["Content-Transfer-Encoding"] = "binary"
     
-    send_file(@song.path, 
+    if @song.length
+      response.headers['Content-Duration'] = @song.length.to_s
+      response.headers['X-Content-Duration'] = @song.length.to_s
+    end
+    
+    send_file @song.path,
       :type => "audio/#{@song.extension.slice(1..10)}",
       :disposition => "inline",
       :status => status_code,
       :stream =>  'true',
-      :buffer_size  =>  2048)
-      
+      :buffer_size => 2048
+
     # logger.info "----------------------------"
     # response.headers.each do |name, content|
     #   logger.info "#{name}: #{content}"
     # end
     # logger.info "----------------------------"
-      
+    
   end
   
 private

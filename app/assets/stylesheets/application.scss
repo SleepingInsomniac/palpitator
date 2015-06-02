@@ -138,15 +138,6 @@ section {
 //        border-right: 10px solid rgba(0,0,0,0.1);
 //    }
     
-    ul {
-        margin: 0;
-        padding: 0;
-        
-        li {
-            padding: 0px;
-            margin: 0;
-            position: relative;
-            
             button.selected {
 //                background-color: #1B272D;
                 background-color: #141D22;
@@ -155,21 +146,28 @@ section {
                 border-top: 2px solid rgba(0,0,0,0.2);
                 border-bottom: 1px solid rgba(255,255,255,0.1);
                 margin-top: -1px;
-                pointer-events: none;
+//                pointer-events: none;
             }
+    
+    ul, ol {
+        margin: 0;
+        padding: 0;
+        
+        li {
+            padding: 0px;
+            margin: 0;
+            position: relative;
+            
         }
     }
     
     ol {
         counter-reset: li;
-        margin: 0;
-        padding: 0;
         
         color: white;
         list-style-type: none;
         
         li {
-            position: relative;
             
             button {
                 color: black;

@@ -37,6 +37,7 @@
     <section class="playlist">
       <div class="playlistControls">
         <button ng-click="playlist.clear()">Clear</button>
+        <button ng-click="startShuffle()" ng-class="player.shuffle ? 'selected' : ''">Shuffle</button>
       </div>
       <ol>
         <li ng-repeat="song in playlist.songs track by $index" ng-class="song == selected.song ? 'playing' : ''" draggable="true">

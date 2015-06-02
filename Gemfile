@@ -24,4 +24,4 @@ gem 'jbuilder'
 # To use debugger
 # gem 'ruby-debug19', :require => 'ruby-debug', :group => :development
 
-gem 'thin'
+# gem 'thin'

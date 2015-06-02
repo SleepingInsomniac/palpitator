@@ -12,7 +12,8 @@ pulpApp.controller('AppController', function($scope, $http) {
     };
     
     $scope.player = {
-        playing: false
+        playing: false,
+        shuffle: false
     };
     
     $scope.data = {
@@ -30,6 +31,20 @@ pulpApp.controller('AppController', function($scope, $http) {
                 $scope.selected.song = $scope.playlist.songs[0];
                 $scope.player.playing = true;
             }
+        },
+        addRandom: function(play) {
+            play = play || false;
+            $http.get('/songs/random').success(function(data) {
+                console.log('random!');
+                $scope.playlist.add(data);
+                if (play) {
+                    var song = $scope.playlist.songs[$scope.playlist.songs.length - 1];
+                    $scope.selected.song = song;
+                    $scope.playing = true;
+                }
+            }).error(function(data, status) {
+                console.error(data, status);
+            });
         },
         remove: function (song) {
             var index = $scope.playlist.songs.indexOf(song);
@@ -53,12 +68,16 @@ pulpApp.controller('AppController', function($scope, $http) {
             for (var i in data) {
                 $scope.playlist.add(data[i]);
             }
+        }).error(function(data, status) {
+            console.error(data, status);
         });
     }
     
     // initial load
     $http.get('/artists').success(function(data) {
         $scope.data.artists = data;
+    }).error(function(data, status) {
+        console.error(data, status);
     });
     
     $scope.getAlbums = function(id) {
@@ -66,9 +85,14 @@ pulpApp.controller('AppController', function($scope, $http) {
         
         $http.get('/artists/'+id+'/albums').success(function(data) {
             $scope.data.albums = data;
+        }).error(function(data, status) {
+            console.error(data, status);
         });
+        
         $http.get('/artists/'+id+'/songs').success(function(data) {
             $scope.data.songs = data;
+        }).error(function(data, status) {
+            console.error(data, status);
         });
     }
     
@@ -77,7 +101,9 @@ pulpApp.controller('AppController', function($scope, $http) {
         
         $http.get('/albums/'+id+'/songs').success(function(data) {
             $scope.data.songs = data;
-        });
+        }).error(function(data, status) {
+            console.error(data, status);
+        });;
     }
     
     $scope.player.playSong = function(song) {
@@ -87,11 +113,18 @@ pulpApp.controller('AppController', function($scope, $http) {
     
     $scope.player.nextSong = function() {
         var index = $scope.playlist.songs.indexOf($scope.selected.song);
+        
         if (index < $scope.playlist.songs.length) {
             $scope.selected.song = $scope.playlist.songs[index+1];
         } else {
             $scope.player.playing = false;
+            $scope.selected.song = null;
         }
+        
+        if ($scope.player.shuffle) {
+            $scope.playlist.addRandom(true);
+        }
+        
     }
     
     $scope.player.prevSong = function() {
@@ -104,6 +137,14 @@ pulpApp.controller('AppController', function($scope, $http) {
     $scope.player.togglePlay = function() {
         $scope.player.playing ? player.pause() : player.play();
         $scope.player.playing = !$scope.player.playing;
+        if (!$scope.selected.song && $scope.playlist.songs.length > 0) $scope.player.playSong($scope.playlist.songs[0]);
+    }
+    
+    $scope.startShuffle = function() {
+        $scope.player.shuffle = !$scope.player.shuffle
+        if ($scope.playlist.songs.length < 1 && $scope.player.shuffle) {
+            $scope.playlist.addRandom();
+        }
     }
     
     Lx(window).on('keypress', function(e) {

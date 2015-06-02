@@ -7,7 +7,6 @@ json.array!(@songs) do |song|
     :length,
     :album_id,
     :play_count,
-    :path,
     :digest,
     :extension,
     :created_at,
