@@ -424,6 +424,8 @@ hr.clear {
 }
 
 .playlistControls {
+    position: relative;
+    z-index: 99;
     
     button {
         float: left;
