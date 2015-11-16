@@ -5,7 +5,9 @@ class LibraryController < ApplicationController
   def update
     audio_root = APP_CONFIG['audio_root']
     not_added = []
+    puts "Added new songs at #{audio_root}"
     Dir[File.join(audio_root, "**", "*")].reject { |d| File.directory? d }.each do |file|
+      puts file
       TagLib::FileRef.open(File.expand_path(file)) do |ref|
         tag = ref.tagq
         not_added << file and next unless tag
