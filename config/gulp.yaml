@@ -1,0 +1,77 @@
+default:
+  watchpaths:
+    styles:
+      - ./app/assets/styles/**/*.scss
+    scripts:
+      - ./app/angular/**/*.js
+    markup:
+      - ./app/views/**.html.erb
+    reload:
+  
+  files:
+    sources:
+      - ./app/assets/files/**/*
+    dest: ./public/
+  
+  styles:
+    sources:
+      - ./app/assets/styles/manifest.scss
+    concat: styles.min.css
+    dest: ./public/assets/
+    options:
+      sourcemap: true
+      style: nested
+      
+  scripts:
+    sources:
+      - ./app/angular/main.js
+      - ./app/angular/models/**/*.js
+      - ./app/angular/controllers/*.js
+      - ./app/angular/directives/*.js
+      - ./app/angular/routes.js
+    concat: scripts.min.js
+    dest: ./public/assets/
+    options:
+      sourcemap: true
+      
+  markup:
+    sources:
+      - ''
+    dest: ./public/
+    options:
+  
+  vendor:
+    sources:
+      - ./node_modules/angular/angular.min.js
+      - ./node_modules/angular-route/angular-route.min.js
+      - ./node_modules/angular-resource/angular-resource.min.js
+      - ./node_modules/angular-sanitize/angular-sanitize.min.js
+      - ./node_modules/angular-touch/angular-touch.min.js
+      - ./node_modules/dragula/dist/dragula.min.js
+      - ./node_modules/dropzone/dist/min/dropzone.min.js
+    concat: vendor.js
+    sourcemap: true
+    dest: ./public/assets/
+    
+  browsersync:
+    open: false
+    proxy: localhost:3000
+    # server:
+    #   baseDir: 'public'
+    
+  server:
+    cmd: 'rails'
+    args:
+      - 's'
+  
+  icons:
+    config: ./config/savage.yaml
+    source: ./app/assets/icons
+    concat: _icons.scss
+    dest:
+      stylesheet: ./app/assets/styles
+      fonts: ./app/assets/fonts
+  
+test:
+
+production:

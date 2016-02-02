@@ -16,4 +16,4 @@
 # Using secret_token for rails3 compatibility. Change to secret_key_base
 # to avoid deprecation warning.
 # Can be safely removed in a rails3 api-only application.
-Pulpitator::Application.config.secret_token = 'ac0d3e2f9435f3173d70aab4643d2930b46e9916d8d181bd9113979624c9b5a3d5352bb4fa81a73c16568e90df575daca9030213e3880a7a07d48fa94deb9b11'
+PulpitatorV2::Application.config.secret_token = '095aec24e41bc32f07258cde75186d304a9732dea8e80629860dd1ffee251dd6ef3e94b54bc747d9d958e0b336c019a6e1ee0a9afb1f8ed42cf792fba6f433e6'

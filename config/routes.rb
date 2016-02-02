@@ -1,25 +1,5 @@
 Rails.application.routes.draw do
-  resources :listings, except: [:new, :edit]
-  resources :playlists, except: [:new, :edit]
-  resources :songs, except: [:new, :edit] do
-    collection do
-      get 'random'
-    end
-    member do
-      get 'play'
-    end
-  end
-  resources :albums, except: [:new, :edit] do
-    resources :songs, except: [:new, :edit]
-  end
-  resources :artists, except: [:new, :edit] do
-    resources :albums, except: [:new, :edit]
-    resources :songs, except: [:new, :edit]
-  end
-  patch 'library/update'
-  get 'library/search'
-  
-  root 'home#index'
+  root 'screen#index'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
