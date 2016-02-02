@@ -9,7 +9,7 @@ class LibraryController < ApplicationController
     Dir[File.join(audio_root, "**", "*")].reject { |d| File.directory? d }.each do |file|
       puts file
       TagLib::FileRef.open(File.expand_path(file)) do |ref|
-        tag = ref.tagq
+        tag = ref.tag
         not_added << file and next unless tag
         
         artist = Artist.where(name: (tag.artist || "Untitled Artist").titleize).first_or_create
