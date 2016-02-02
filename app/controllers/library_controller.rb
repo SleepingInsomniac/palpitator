@@ -34,7 +34,7 @@ class LibraryController < ApplicationController
     end
     render json: {
       notice: 'done',
-      file_count: count
+      file_count: count,
       not_added: not_added,
       added: added
     }
