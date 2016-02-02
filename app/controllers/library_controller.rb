@@ -9,7 +9,7 @@ class LibraryController < ApplicationController
     count = 0
     puts "Added new songs at #{audio_root}"
     Dir[File.join(audio_root, "**", "*")].reject { |d| File.directory? d }.each do |file|
-      count++
+      count += 1
       TagLib::FileRef.open(File.expand_path(file)) do |ref|
         tag = ref.tag
         not_added << file and next unless tag
