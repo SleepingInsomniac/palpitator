@@ -1,0 +1,14 @@
+{
+  "ecmaFeatures": {
+    "arrowFunctions": true,
+    "blockBindings": true,
+    "forOf": true,
+    "jsx": true,
+    "classes": true,
+    "destructuring": true,
+    "defaultParams": true,
+    "binaryLiterals": true,
+    "blockBindings": true,
+    "templateStrings": true
+  }
+}
