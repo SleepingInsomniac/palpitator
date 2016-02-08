@@ -10,6 +10,8 @@ gem 'jbuilder'
 gem 'spring', :group => :development
 gem 'thin', :group => :development
 
+gem 'rails-erd'
+
 # Use unicorn as the app server
 # gem 'unicorn'
 
