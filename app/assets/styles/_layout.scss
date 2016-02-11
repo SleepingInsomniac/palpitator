@@ -1,0 +1,26 @@
+.app-container {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  
+  > header {
+    min-height: 200px;
+  }
+  
+  > footer {
+    min-height: 100px;
+  }
+  
+  > main {
+    display: flex;
+    flex: 1 0 0;
+    
+    section {
+      flex: 1 0 0;
+      border: 1px solid gray;
+      
+      
+    }
+  }
+  
+}
