@@ -7,6 +7,10 @@ app.controller(
     $routeParams
   ) {
     
-    // bleh
+    $scope.currentSong = {
+      id: 1,
+      track: 1,
+      title: 'Song Title'
+    };
     
 });

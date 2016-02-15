@@ -1,0 +1,44 @@
+.player {
+  display: flex;
+  justify-content: center;
+  
+  > * {
+    flex: 1 0 0;
+  }
+}
+
+.display {
+  border: 1px solid gray;
+  padding: 10px;
+  display: flex;
+  min-width: 350px;
+  max-width: 100%;
+  justify-content: center;
+  text-align: center;
+  flex-wrap: wrap;
+  align-items: center;
+  
+  h3 {
+    flex: 1 0 100%;
+    margin: 0;
+    padding: 0;
+  }
+}
+
+.speaker {
+  background-color: gray;
+}
+
+.controls {
+  display: flex;
+  flex-direction: column;
+  
+  > * {
+    flex: 1 0 0;
+  }
+}
+
+.buttons {
+  display: flex;
+  justify-content: center;
+}
