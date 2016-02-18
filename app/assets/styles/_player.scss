@@ -1,7 +1,7 @@
 .player {
   display: flex;
   justify-content: center;
-  background-color: gray;
+  background-color: #0e121b;
   padding: 10px;
   
   > * {
@@ -33,13 +33,18 @@
 
 .speaker {
   //background-color: gray;
-  
+  background-image: url('/assets/dark_circles.png');
+  border-radius: 10px;
+  margin: 5px;
 }
 
 .controls {
   display: flex;
   flex-direction: column;
-  background-color: #585858;
+  background-color: #262626;
+  //background-image: url('/assets/dark_wood.png');
+  border-bottom: 3px solid black;
+  box-shadow: 0 0 5px rgba(#000,0.3);
   padding: 10px;
   border-radius: 10px;
   
@@ -56,10 +61,9 @@
 }
 
 .player-btn {
-  border-radius: 50%;
-  border: none;
-  width: 40px;
-  height: 40px;
+  border-radius: 15px;
+  width: 50px;
+  height: 36px;
   
   &:first-of-type {
     border-top-right-radius: 0;
@@ -79,8 +83,9 @@
   .btn-play {
     position: relative;
     z-index: 10;
+    border-radius: 50%;
     width: 60px;
     height: 60px;
-    border: 1px solid #006D99;
+    //border: 1px solid #006D99;
   }
 }

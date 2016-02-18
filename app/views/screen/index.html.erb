@@ -22,7 +22,12 @@
             <h1>Playlist</h1>
           </header>
           <ul>
-            <li ng-repeat="song in songs">{{song.title}}</li>
+            <li ng-repeat="song in songs">
+              <span>{{song.title}}</span>
+              <button>
+                <i class="fa fa-close"></i>
+              </button>
+            </li>
           </ul>
         </section>
       </main>

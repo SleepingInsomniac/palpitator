@@ -1,16 +1,27 @@
+$button-color: #092C4A;
+
 button {
-  background-color: #092C4A;
+  background-color: $button-color;
   color: #E2FFF7;
   text-shadow: 0 0 5px rgba(#00FFFB, 0.3);
+  border: none;
+  border-bottom: 3px solid rgba(#000,0.3);
+  transition: 0.2s linear;
   
   &:hover {
-    
+    background-color: lighten($button-color,5%);
+    border-bottom-width: 6px;
+    text-shadow: 0 0 10px rgba(#00FFFB, 0.6);
   }
   &:active {
-    
+    box-shadow: 0 0 10px rgba(#00FFFB, 0.6);
+    text-shadow: 0 0 10px rgba(#00FFFB, 0.3);
+    border-bottom-width: 0px;
+    border-top-width: 3px;
+    background-color: darken($button-color,5%);
   }
   &:focus {
-    
+    outline: none;
   }
   
   &.pressed {

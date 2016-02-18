@@ -2,9 +2,10 @@
   display: flex;
   flex-direction: column;
   height: 100vh;
+  background-image: url('/assets/dark_wood.png');
   
   > header {
-    min-height: 150px;
+    min-height: 180px;
   }
   
   > footer {
@@ -17,7 +18,7 @@
     
     section {
       flex: 1 0 0;
-      border: 1px solid gray;
+      //border: 1px solid gray;
     }
   }
   
