@@ -1,6 +1,8 @@
 .player {
   display: flex;
   justify-content: center;
+  background-color: gray;
+  padding: 10px;
   
   > * {
     flex: 1 0 0;
@@ -17,6 +19,10 @@
   text-align: center;
   flex-wrap: wrap;
   align-items: center;
+  background-color: #E0E2D9;
+  color: #1c4900;
+  text-shadow: 0 0 5px #D7FFC1;
+  border-radius: 10px;
   
   h3 {
     flex: 1 0 100%;
@@ -26,19 +32,55 @@
 }
 
 .speaker {
-  background-color: gray;
+  //background-color: gray;
+  
 }
 
 .controls {
   display: flex;
   flex-direction: column;
+  background-color: #585858;
+  padding: 10px;
+  border-radius: 10px;
   
   > * {
     flex: 1 0 0;
   }
 }
 
-.buttons {
-  display: flex;
+.player .buttons {
+  display: inline-flex;
   justify-content: center;
+  align-items: center;
+  //margin: 10px;
+}
+
+.player-btn {
+  border-radius: 50%;
+  border: none;
+  width: 40px;
+  height: 40px;
+  
+  &:first-of-type {
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+    padding-right: 10px;
+    margin-right: -10px;
+  }
+  &:last-of-type {
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+    padding-left: 10px;
+    margin-left: -10px;
+  }
+}
+
+.player {
+  .btn-play {
+    position: relative;
+    z-index: 10;
+    width: 60px;
+    height: 60px;
+    border: 1px solid #006D99;
+  }
 }

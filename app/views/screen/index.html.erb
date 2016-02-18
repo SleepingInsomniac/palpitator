@@ -14,24 +14,7 @@
     <audio></audio>
     <div class="app-container">
       
-      <header class="player" ng-controller="PlayerController">
-        <div class="speaker speaker-left">&nbsp;</div>
-        <div class="controls">
-          <div class="display">
-            <h3>{{ currentSong.title }}</h3>
-            <aside class="display-info">
-              <span class="display-info-artist">Artist</span>
-              <span class="display-info-album">Album</span>
-            </aside>
-          </div>
-          <div class="buttons">
-            <button class="btn-previous"><i class="fa fa-fast-backward"></i></button>
-            <button class="btn-play"><i class="fa fa-play"></i></button>
-            <button class="btn-next"><i class="fa fa-fast-forward"></i></button>
-          </div>
-        </div>
-        <div class="speaker speaker-right">&nbsp;</div>
-      </header>
+      <%= render partial: 'player.html' %>
       
       <main>
         <section class="playlist" ng-controller="PlaylistController">

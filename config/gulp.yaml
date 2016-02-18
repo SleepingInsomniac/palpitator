@@ -5,8 +5,9 @@ default:
     scripts:
       - ./app/angular/**/*.js
     markup:
-      - ./app/views/**.html.erb
+      - ./app/views/**/*.html.erb
     reload:
+      - ./app/views/**/*.html.erb
   
   files:
     sources:
