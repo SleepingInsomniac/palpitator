@@ -41,7 +41,7 @@
           </header>
           <ul>
             <li ng-repeat="artist in artists | filter: artistsFilter">
-              <button>{{artist.name}}</button>
+              <button>{{::artist.name}}</button>
             </li>
           </ul>
         </section>
