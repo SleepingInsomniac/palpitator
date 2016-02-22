@@ -19,14 +19,29 @@
       <main>
         <section class="playlist" ng-controller="PlaylistController">
           <header>
-            <h1>Playlist</h1>
+            <!-- <h1>Playlist</h1> -->
           </header>
           <ul>
             <li ng-repeat="song in songs">
-              <span>{{song.title}}</span>
-              <button>
+              <button>{{song.title}}</button>
+              <button class="remove">
                 <i class="fa fa-close"></i>
               </button>
+            </li>
+          </ul>
+        </section>
+        
+        <section class="artists" ng-controller="ArtistsController">
+          <header>
+            <!-- <h1>Artists</h1> -->
+            <div class="search">
+              <input ng-model="artistsFilter" type="text" placeholder="Search Artists">
+              <button class="remove" ng-click="artistsFilter = ''"><i class="fa fa-close"></i></button>
+            </div>
+          </header>
+          <ul>
+            <li ng-repeat="artist in artists | filter: artistsFilter">
+              <button>{{artist.name}}</button>
             </li>
           </ul>
         </section>

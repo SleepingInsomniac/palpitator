@@ -1,15 +1,24 @@
+body {
+  background-color: black;
+  background-image: url('/assets/dark_wood.png');
+}
+
 .app-container {
   display: flex;
   flex-direction: column;
   height: 100vh;
-  background-image: url('/assets/dark_wood.png');
   
   > header {
     min-height: 180px;
   }
   
   > footer {
-    min-height: 50px;
+    height: 40px;
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    
+    background-color: rgba(#000,0.3);
   }
   
   > main {

@@ -1,0 +1,22 @@
+input {
+  
+  border: none;
+  transition: 0.2s linear;
+  
+  &[type=text],
+  &[type=search],
+  &[type=email],
+  &[type=password] {
+    
+    background-color: rgba(#FFF,0.2);
+    padding: 10px;
+    
+    &:focus {
+      position: relative;
+      z-index: 10;
+      outline: none;
+      box-shadow: 0 0 10px rgba($glow-color,0.4);
+//      text-shadow: 0 0 10px rgba($glow-color,0.3);
+    }
+  }
+}

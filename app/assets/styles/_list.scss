@@ -1,0 +1,47 @@
+main {
+  
+  section {
+    
+    display: flex;
+    flex-direction: column;
+    padding: 5px;
+    
+    header {
+      flex: 0 0 auto;
+      
+      input {
+        width: 100%;
+      }
+    }
+    
+    ul {
+      list-style-type: none;
+      margin: 0;
+      padding: 0;
+      flex: 1 0 0;
+      overflow-y: auto;
+      
+      li {
+        display: flex;
+        padding: 0px;
+        margin: 0;
+//        border: 1px solid gray;
+        
+        button {
+          flex: 1 0 0;
+          text-align: left;
+          padding: 10px;
+          margin: 0;
+        }
+      }
+    }
+  }
+}
+
+.search {
+  display: flex;
+  
+  input {
+    flex: 1 0 0;
+  }
+}

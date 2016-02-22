@@ -1,25 +1,27 @@
-$button-color: #092C4A;
-
 button {
   background-color: $button-color;
   color: #E2FFF7;
-  text-shadow: 0 0 5px rgba(#00FFFB, 0.3);
-  border: none;
+  text-shadow: 0 0 5px rgba($glow-color, 0.3);
+  border: 0px solid rgba(#000,0.3);
   border-bottom: 3px solid rgba(#000,0.3);
   transition: 0.2s linear;
   
   &:hover {
-    background-color: lighten($button-color,5%);
+    background-color: lighten($button-color, 5%);
     border-bottom-width: 6px;
-    text-shadow: 0 0 10px rgba(#00FFFB, 0.6);
+    margin-top: -2px;
+    text-shadow: 0 0 10px rgba($glow-color, 0.6);
   }
+  
   &:active {
-    box-shadow: 0 0 10px rgba(#00FFFB, 0.6);
-    text-shadow: 0 0 10px rgba(#00FFFB, 0.3);
+    box-shadow: 0 0 10px rgba($glow-color, 0.6);
+    text-shadow: 0 0 10px rgba($glow-color, 0.3);
     border-bottom-width: 0px;
-    border-top-width: 3px;
+    border-top-width: 6px;
+//    transform: translateY(3px);
     background-color: darken($button-color,5%);
   }
+  
   &:focus {
     outline: none;
   }
@@ -27,4 +29,12 @@ button {
   &.pressed {
     
   }
+  
+  &.remove {
+    text-align: center;
+    flex: 0 0 auto;
+    padding: 10px 15px;
+    border-left: 1px solid rgba(#000,0.2);
+  }
+  
 }

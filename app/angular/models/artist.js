@@ -2,7 +2,7 @@ app.factory(
 'Artist',
 function($resource) {
   
-  return $resource('/api/artists/:id', {id:'@id'}, {
+  return $resource('/artists/:id', {id:'@id'}, {
     update: {
       method: 'PUT',
       transformRequest: function(data) {
