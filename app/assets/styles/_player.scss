@@ -1,16 +1,22 @@
 .playhead {
-  height: 4px;
+  $playhead-height: 4px;
+  $playhead-scale-factor: 2.5;
+  
+  height: $playhead-height;
   background-color: black;
   position: relative;
   margin: 0px 20px 10px;
   transition: 0.2s linear;
+  border-radius: ($playhead-height/2);
+//  overflow: hidden;
   
   &:hover {
-    height: 10px;
+    height: ($playhead-height * $playhead-scale-factor);
     cursor: ew-resize;
+    border-radius: (($playhead-height * $playhead-scale-factor) / 2);
     
     .playhead-progress {
-      @include border-radii(0, 5px, 5px, 0);
+      border-radius: (($playhead-height * $playhead-scale-factor) / 2);
     }
   }
   
@@ -23,7 +29,7 @@
     height: 100%;
     background-color: white;
     box-shadow: 0 0 10px rgba(yellow, 1);
-    @include border-radii(0, 2px, 2px, 0);
+    border-radius: ($playhead-height / 2);
   }
 }
 

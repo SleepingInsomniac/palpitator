@@ -5,6 +5,7 @@ button {
   border: 0px solid rgba(#000,0.3);
   border-bottom: 3px solid rgba(#000,0.3);
   transition: 0.2s linear;
+  padding: 10px;
   
   &:hover {
     background-color: lighten($button-color, 5%);
