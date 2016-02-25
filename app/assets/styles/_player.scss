@@ -1,3 +1,32 @@
+.playhead {
+  height: 4px;
+  background-color: black;
+  position: relative;
+  margin: 0px 20px 10px;
+  transition: 0.2s linear;
+  
+  &:hover {
+    height: 10px;
+    cursor: ew-resize;
+    
+    .playhead-progress {
+      @include border-radii(0, 5px, 5px, 0);
+    }
+  }
+  
+  .playhead-progress {
+    position: absolute;
+    z-index: 50;
+    top: 0;
+    left: 0;
+    width: 50%;
+    height: 100%;
+    background-color: white;
+    box-shadow: 0 0 10px rgba(yellow, 1);
+    @include border-radii(0, 2px, 2px, 0);
+  }
+}
+
 .player {
   display: flex;
   justify-content: center;

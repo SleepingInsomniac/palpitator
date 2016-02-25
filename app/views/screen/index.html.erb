@@ -16,9 +16,15 @@
       
       <%= render partial: 'player.html' %>
       
+      <div class="playhead">
+        <div class="playhead-progress"></div>
+      </div>
+      
       <main>
         <section class="playlist" ng-controller="PlaylistController">
           <header>
+            <button>Clear</button>
+            <button>Shuffle</button>
             <!-- <h1>Playlist</h1> -->
           </header>
           <ul>
@@ -31,7 +37,7 @@
           </ul>
         </section>
         
-        <section class="artists" ng-controller="ArtistsController">
+        <section class="artists" ng-controller="LibraryController">
           <header>
             <!-- <h1>Artists</h1> -->
             <div class="search">
@@ -41,7 +47,10 @@
           </header>
           <ul>
             <li ng-repeat="artist in artists | filter: artistsFilter">
-              <button>{{::artist.name}}</button>
+              <button ng-click="selectArtist(artist)">{{::artist.name}}</button>
+              <ul ng-show="selectedArtist == artist">
+                <li ng-repeat="album in artist.albums">{{album.title}}</li>
+              </ul>
             </li>
           </ul>
         </section>

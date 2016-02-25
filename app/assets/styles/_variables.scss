@@ -1,2 +1,9 @@
+@mixin border-radii($top-left, $top-right, $bottom-right, $bottom-left) {
+  border-top-left-radius:     $top-left;
+  border-top-right-radius:    $top-right;
+  border-bottom-right-radius: $bottom-right;
+  border-bottom-left-radius:  $bottom-left;
+}
+
 $button-color: #092C4A;
 $glow-color: #00FFFB;
