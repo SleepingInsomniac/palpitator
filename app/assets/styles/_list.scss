@@ -1,5 +1,7 @@
 main {
   
+  background-color: rgba(#000,0.3);
+  
   section {
     
     display: flex;
@@ -14,7 +16,7 @@ main {
       }
     }
     
-    ul {
+    ul, ol {
       list-style-type: none;
       margin: 0;
       padding: 0;
@@ -25,7 +27,27 @@ main {
         display: flex;
         padding: 0px;
         margin: 0;
-//        border: 1px solid gray;
+        font-size: 0.9em;
+        color: #657781;
+        background-color: rgba(#0E1624, 0.7);
+        
+        &:nth-child(even) {
+          background-color: rgba(lighten(#0E1624, 5%),0.7);
+        }
+        
+        &:hover {
+          cursor: pointer;
+        }
+        
+        div {
+          display: flex;
+        }
+        
+        .item {
+          flex: 1 0 0;
+          padding: 10px;
+          transition: 0.15s linear;
+        }
         
         button {
           flex: 1 0 0;
@@ -33,6 +55,36 @@ main {
           padding: 10px;
           margin: 0;
         }
+        
+        ul {
+          padding: 0px 10px 5px;
+          background-color: rgba(black, 1);
+        }
+      }
+    }
+    
+    ol {
+      li {
+        .item:before {
+          content: attr(data-track) '. ';
+          border: 1 dashed red;
+          padding-right: 0.5em;
+          font-size: 0.9em;
+        }
+      }
+    }
+    
+    &.playlist {
+      
+      .item.playing {
+        color: #FFF;
+        text-shadow: 0 0 10px rgba($glow-color, 1);
+      }
+    }
+    
+    &.artists {
+      li {
+        flex-direction: column;
       }
     }
   }

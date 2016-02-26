@@ -12,23 +12,25 @@ body {
     min-height: 180px;
   }
   
+  > main {
+    display: flex;
+    flex: 1 0 0;
+    padding: 10px 10px 0;
+    justify-content: center;
+    
+    section {
+      flex: 1 0 0;
+      max-width: 500px;
+    }
+  }
+  
   > footer {
     height: 40px;
     padding: 10px;
     display: flex;
     align-items: center;
     
-    background-color: rgba(#000,0.3);
+//    background-color: rgba(#000,0.3);
+    color: rgba(white, 0.2);
   }
-  
-  > main {
-    display: flex;
-    flex: 1 0 0;
-    
-    section {
-      flex: 1 0 0;
-      //border: 1px solid gray;
-    }
-  }
-  
 }

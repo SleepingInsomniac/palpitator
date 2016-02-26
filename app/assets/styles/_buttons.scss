@@ -2,23 +2,26 @@ button {
   background-color: $button-color;
   color: #E2FFF7;
   text-shadow: 0 0 5px rgba($glow-color, 0.3);
-  border: 0px solid rgba(#000,0.3);
+  border: 1px solid rgba(#000,0.1);
+//  border-top: 1px solid rgba(#000,0.1);
   border-bottom: 3px solid rgba(#000,0.3);
   transition: 0.2s linear;
   padding: 10px;
   
   &:hover {
     background-color: lighten($button-color, 5%);
-    border-bottom-width: 6px;
-    margin-top: -2px;
+//    border-bottom-width: 6px;
     text-shadow: 0 0 10px rgba($glow-color, 0.6);
   }
   
   &:active {
+//    position: relative;
+//    z-index: 99;
     box-shadow: 0 0 10px rgba($glow-color, 0.6);
     text-shadow: 0 0 10px rgba($glow-color, 0.3);
     border-bottom-width: 0px;
-    border-top-width: 6px;
+    margin-top: 3px;
+//    border-top-width: 6px;
 //    transform: translateY(3px);
     background-color: darken($button-color,5%);
   }
@@ -31,11 +34,60 @@ button {
     
   }
   
-  &.remove {
+  &.activated {
+    position: relative;
+    z-index: 10;
+    background-color: lighten($button-color, 5%);
+    border-top-width: 1px;
+    border-bottom-width: 6px;
+    color: white;
+    text-shadow: 0 0 10px rgba($glow-color, 1);
+    box-shadow: 0 0 10px rgba($glow-color, 0.6);
+  }
+  
+  &.no-stretch {
     text-align: center;
     flex: 0 0 auto;
     padding: 10px 15px;
     border-left: 1px solid rgba(#000,0.2);
+  }
+  
+  &.danger, &.success {
+    background-color: transparent;
+    border: 1px solid transparent;
+    text-shadow: none;
+    box-shadow: none;
+    margin: 0;
+  }
+  
+  &.success {
+    color: #2B3E1D;
+    
+    &:hover {
+      color: #c9ffad;
+      text-shadow: 0 0 10px rgba(green, 1);
+    }
+    
+    &:active {
+      color: #FFF;
+      background-color: rgba(green, 0.1);
+      text-shadow: 0 0 20px rgba(green, 1);
+    }
+  }
+  
+  &.danger {
+    color: #36000a;
+    
+    &:hover {
+      color: #fdbbc1;
+      text-shadow: 0 0 10px rgba(red, 1);
+    }
+    
+    &:active {
+      color: #FFF;
+      background-color: rgba(red, 0.1);
+      text-shadow: 0 0 20px rgba(red, 1);
+    }
   }
   
 }

@@ -12,12 +12,10 @@ app.controller(
     
     $scope.artists = Artist.query();
 
-    $scope.selectArtist = function(artist) {
-      $scope.selectedArtist = artist;
+    $scope.getAlbums = function(artist) {
       if (!artist.albums) {
         artist.albums = Album.byArtist({artist_id: artist.id});
       }
-      console.log(artist);
     };
     
 });
