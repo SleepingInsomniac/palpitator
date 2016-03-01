@@ -16,28 +16,14 @@
       
       <%= render partial: 'player.html' %>
       
-      <div class="playhead">
-        <div class="playhead-progress"></div>
+      <div class="playhead-container">
+        <div class="playhead">
+          <div class="playhead-progress"></div>
+        </div>
       </div>
       
       <main>
-        <section class="playlist" ng-controller="PlaylistController">
-          <header>
-            <button>Clear</button>
-            <button>Shuffle</button>
-            <!-- <h1>Playlist</h1> -->
-          </header>
-          <ol>
-            <li ng-repeat="song in songs">
-              <div class="item" data-track="{{song.track}}" ng-class="{playing: song == currentSong}" ng-click="$parent.currentSong = song">
-                {{song.title}}
-              </div>
-              <button class="danger no-stretch">
-                <i class="fa fa-close"></i>
-              </button>
-            </li>
-          </ol>
-        </section>
+        <%= render partial: 'playlist.html' %>
         
         <section class="artists" ng-controller="LibraryController">
           <header>

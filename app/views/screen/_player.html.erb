@@ -2,10 +2,10 @@
   <div class="speaker speaker-left">&nbsp;</div>
   <div class="controls">
     <div class="display">
-      <h3>{{ currentSong.title }}</h3>
+      <h3>{{ player.song.title || 'Nothing Pulpitating' }}</h3>
       <aside class="display-info">
-        <span class="display-info-artist">Artist</span>
-        <span class="display-info-album">Album</span>
+        <span class="display-info-artist">{{ player.artist.name }}</span>
+        <span class="display-info-album">{{ player.album.title }}</span>
       </aside>
     </div>
     <div class="buttons">

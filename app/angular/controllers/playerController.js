@@ -4,13 +4,10 @@ app.controller(
     $scope,
     $http,
     $resource,
-    $routeParams
+    $routeParams,
+    Player
   ) {
     
-    $scope.currentSong = {
-      id: 1,
-      track: 1,
-      title: 'Song Title'
-    };
+    $scope.player = Player;
     
 });

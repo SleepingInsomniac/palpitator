@@ -12,6 +12,10 @@ body {
     min-height: 180px;
   }
   
+  > .playhead-container {
+    min-height: 4px;
+  }
+  
   > main {
     display: flex;
     flex: 1 0 0;
@@ -30,7 +34,7 @@ body {
     display: flex;
     align-items: center;
     
-//    background-color: rgba(#000,0.3);
-    color: rgba(white, 0.2);
+    background-color: rgba(#000,0.3);
+    color: rgba(#FFF, 0.2);
   }
 }

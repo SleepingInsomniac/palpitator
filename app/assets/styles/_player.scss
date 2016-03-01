@@ -1,10 +1,16 @@
+.playhead-container {
+  position: relative;
+}
+
 .playhead {
   $playhead-height: 4px;
   $playhead-scale-factor: 2.5;
   
   height: $playhead-height;
   background-color: black;
-  position: relative;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
   margin: 0px 20px;
   transition: 0.2s linear;
   border-radius: ($playhead-height/2);
