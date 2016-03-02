@@ -45,7 +45,7 @@ main {
         
         .item {
           flex: 1 0 0;
-          padding: 10px;
+          padding: 14px 10px;
           transition: 0.15s linear;
         }
         
@@ -82,9 +82,21 @@ main {
       }
     }
     
-    &.artists {
+    &.library-artists {
       li {
         flex-direction: column;
+        
+        ul {
+          border: 1px dashed red;
+          display: flex;
+          flex-direction: column;
+          height: 100px;
+          
+          li {
+            flex: 1 0 0;
+            height: 100px;
+          }
+        }
       }
     }
   }

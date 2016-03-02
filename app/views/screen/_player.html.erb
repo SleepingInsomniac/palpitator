@@ -1,6 +1,7 @@
 <header class="player" ng-controller="PlayerController">
   <div class="speaker speaker-left">&nbsp;</div>
   <div class="controls">
+    <audio autoplay preload src="{{ player.song.path }}"></audio>
     <div class="display">
       <h3>{{ player.song.title || 'Nothing Pulpitating' }}</h3>
       <aside class="display-info">

@@ -24,35 +24,9 @@
       
       <main>
         <%= render partial: 'playlist.html' %>
-        
-        <section class="artists" ng-controller="LibraryController">
-          <header>
-            <!-- <h1>Artists</h1> -->
-            <div class="search">
-              <input ng-model="artistsFilter" type="text" placeholder="Search Artists">
-              <button class="remove no-stretch" ng-click="artistsFilter = ''"><i class="fa fa-close"></i></button>
-            </div>
-          </header>
-          <ul>
-            <li ng-repeat="artist in artists | filter: artistsFilter">
-              <div>
-                <div class="item" ng-click="getAlbums(artist); showAlbums = !showAlbums">{{::artist.name}}</div>
-                <button class="success no-stretch">
-                  <i class="fa fa-plus"></i>
-                </button>
-              </div>
-              <ul ng-show="showAlbums">
-                <li ng-repeat="album in artist.albums">
-                  <div>
-                    <div class="item">{{album.title}}</div>
-                    <button class="success no-stretch">
-                      <i class="fa fa-plus"></i>
-                    </button>
-                  </div>
-                </li>
-              </ul>
-            </li>
-          </ul>
+        <section class="library" ng-controller="LibraryController">
+          <%= render partial: 'artists.html' %>
+          <%= render partial: 'songs.html' %>
         </section>
       </main>
       
