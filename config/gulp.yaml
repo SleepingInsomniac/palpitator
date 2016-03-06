@@ -48,7 +48,7 @@ default:
       - ./node_modules/angular-resource/angular-resource.min.js
       - ./node_modules/angular-sanitize/angular-sanitize.min.js
       - ./node_modules/angular-touch/angular-touch.min.js
-      - ./node_modules/dragula/dist/dragula.min.js
+      - ./node_modules/angular-dragula/dist/angular-dragula.min.js
       - ./node_modules/dropzone/dist/min/dropzone.min.js
     concat: vendor.js
     sourcemap: true

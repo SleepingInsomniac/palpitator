@@ -8,10 +8,13 @@ app.controller(
     Song,
     Album,
     Artist,
-    Player
+    Player,
+    Playlist,
+    dragulaService
   ) {
     
-    $scope.songs = Song.byArtist({artist_id: 2});
+    $scope.playlist = Playlist; //Song.byArtist({artist_id: 2});
+    $scope.player = Player;
     
     $scope.playSong = function(song) {
       console.log(song);
@@ -19,6 +22,10 @@ app.controller(
       Player.song = song;
       Player.artist = song.artist;
       Player.album = song.album;
+    };
+    
+    $scope.removeSong = function(index) {
+      Playlist.list.splice(index, 1);
     };
     
 });

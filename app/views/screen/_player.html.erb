@@ -5,14 +5,17 @@
     <div class="display">
       <h3>{{ player.song.title || 'Nothing Pulpitating' }}</h3>
       <aside class="display-info">
-        <span class="display-info-artist">{{ player.artist.name }}</span>
-        <span class="display-info-album">{{ player.album.title }}</span>
+        <span class="display-info-artist">{{ player.song.artist.name }}</span>
+        <span>:</span>
+        <span class="display-info-album">{{ player.song.album.title }}</span>
       </aside>
     </div>
     <div class="buttons">
-      <button class="player-btn btn-previous"><i class="fa fa-fast-backward"></i></button>
-      <button class="player-btn btn-play"><i class="fa fa-play"></i></button>
-      <button class="player-btn btn-next"><i class="fa fa-fast-forward"></i></button>
+      <button ng-click="previous()" class="player-btn btn-previous"><i class="fa fa-fast-backward"></i></button>
+      <button ng-click="playPause()" class="player-btn btn-play">
+        <i class="fa" ng-class="{'fa-play': !player.playing, 'fa-pause': player.playing}"></i>
+      </button>
+      <button ng-click="forward()" class="player-btn btn-next"><i class="fa fa-fast-forward"></i></button>
     </div>
   </div>
   <div class="speaker speaker-right">&nbsp;</div>

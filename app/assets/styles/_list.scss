@@ -1,3 +1,12 @@
+@keyframes flash-in {
+  0% {
+    box-shadow: 0 0 10px rgba(#FFF,0.2);
+  }
+  100% {
+    box-shadow: 0 0 0 transparent;
+  }
+}
+
 main {
   
   //background-color: rgba(#000,0.3);
@@ -57,8 +66,8 @@ main {
         }
         
         ul {
-          padding: 0px 10px 5px;
-          background-color: rgba(black, 1);
+          border-top: 1px solid black;
+          border-bottom: 5px solid black;
         }
       }
     }
@@ -76,25 +85,25 @@ main {
     
     &.playlist {
       
-      .item.playing {
-        color: #FFF;
-        text-shadow: 0 0 10px rgba($glow-color, 1);
-      }
     }
     
-    &.library-artists {
+    .item.lit {
+      color: #FFF;
+      text-shadow: 0 0 10px rgba($glow-color, 1);
+      animation: flash-in 0.3s ease-out;
+    }
+    
+    &.library-artists, &.library-songs {
       li {
         flex-direction: column;
         
         ul {
-          border: 1px dashed red;
           display: flex;
           flex-direction: column;
-          height: 100px;
           
           li {
+            display: flex;
             flex: 1 0 0;
-            height: 100px;
           }
         }
       }

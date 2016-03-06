@@ -9,21 +9,11 @@
   <ul>
     <li ng-repeat="artist in artists | filter: artistsFilter">
       <div>
-        <div class="item" ng-click="getAlbums(artist)">{{::artist.name}}</div>
-        <button class="success no-stretch">
+        <div class="item" ng-class="{lit: selectedArtist == artist}" ng-click="getAlbums(artist)">{{::artist.name}}</div>
+        <button class="success no-stretch" ng-click="addArtistToPlaylist(artist)">
           <i class="fa fa-plus"></i>
         </button>
       </div>
-      <!-- <ul ng-show="showAlbums">
-        <li ng-repeat="album in artist.albums">
-          <div>
-            <div class="item">{{album.title}}</div>
-            <button class="success no-stretch">
-              <i class="fa fa-plus"></i>
-            </button>
-          </div>
-        </li>
-      </ul> -->
     </li>
   </ul>
 </section>

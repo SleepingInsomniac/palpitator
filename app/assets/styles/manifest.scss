@@ -1,3 +1,6 @@
+@import 'dragula.min';
+
+
 * {
   box-sizing: border-box;
 }
@@ -14,6 +17,10 @@ body {
   padding: 0;
 }
 
+ul, ol {
+  list-style-type: none;
+}
+
 // ============
 // = includes =
 // ============
@@ -26,3 +33,4 @@ body {
 
 @import 'player';
 @import 'list';
+

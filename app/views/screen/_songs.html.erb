@@ -8,11 +8,23 @@
   <ul>
     <li ng-repeat="album in selectedArtist.albums">
       <div>
-        <div class="item">{{::album.title}}</div>
-        <button class="success no-stretch">
+        <div ng-click="getSongs(album); album.showSongs = !album.showSongs" class="item">{{::album.title}}</div>
+        <button ng-click="addAlbumToPlaylist(album)" class="success no-stretch">
           <i class="fa fa-plus"></i>
         </button>
       </div>
+      
+      <ul ng-show="album.showSongs">
+        <li ng-repeat="song in album.songs">
+          <div>
+            <div ng-click="addSongToPlaylist(song)" class="item">{{::song.title}}</div>
+            <!-- <button ng-click="addSongToPlaylist(song)" class="success no-stretch">
+              <i class="fa fa-plus"></i>
+            </button> -->
+          </div>
+        </li>
+      </ul>
+      
     </li>
   </ul>
 </section>
