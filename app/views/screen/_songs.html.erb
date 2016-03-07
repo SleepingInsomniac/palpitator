@@ -14,16 +14,19 @@
         </button>
       </div>
       
-      <ul ng-show="album.showSongs">
+      <ol ng-show="album.showSongs">
         <li ng-repeat="song in album.songs">
           <div>
-            <div ng-click="addSongToPlaylist(song)" class="item">{{::song.title}}</div>
-            <!-- <button ng-click="addSongToPlaylist(song)" class="success no-stretch">
-              <i class="fa fa-plus"></i>
-            </button> -->
+            <div data-track="{{::song.track}}" ng-click="addSongToPlaylist(song)" class="item">
+              <i class="fa fa-music"></i>
+              <span>{{::song.title}}</span>
+            </div>
+            <button ng-click="songInfo.song = song" class="info no-stretch">
+              <i class="fa fa-info"></i>
+            </button>
           </div>
         </li>
-      </ul>
+      </ol>
       
     </li>
   </ul>

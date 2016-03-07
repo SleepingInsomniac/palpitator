@@ -16,12 +16,12 @@ app.controller(
     $scope.playlist = Playlist; //Song.byArtist({artist_id: 2});
     $scope.player = Player;
     
-    $scope.playSong = function(song) {
-      console.log(song);
+    $scope.playSong = function(song, index) {
       $scope.currentSong = song;
       Player.song = song;
-      Player.artist = song.artist;
-      Player.album = song.album;
+      // Player.artist = song.artist;
+      // Player.album = song.album;
+      Player.songIndex = index;
     };
     
     $scope.removeSong = function(index) {

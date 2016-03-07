@@ -2,17 +2,16 @@ app.controller(
   'LibraryController',
   function(
     $scope,
-    $http,
-    $resource,
-    $routeParams,
     Artist,
     Album,
     Song,
+    SongInfo,
     Playlist
   ) {
     
     $scope.artists = Artist.query();
     $scope.selectedArtist = null;
+    $scope.songInfo = SongInfo;
 
     $scope.getAlbums = function(artist) {
       if (!artist.albums) {
@@ -35,9 +34,14 @@ app.controller(
     };
     
     $scope.addAlbumToPlaylist = function(album) {
-      album.songs = Song.byAlbum({album_id: album.id}).$promise.then(function(songs) {
-        Playlist.list = Playlist.list.concat(songs);
-      });
+      if (!album.songs) {
+        Song.byAlbum({album_id: album.id}).$promise.then(function(songs) {
+          album.songs = songs;
+          Playlist.list = Playlist.list.concat(songs);
+        });
+      } else {
+        Playlist.list = Playlist.list.concat(album.songs);
+      }
     };
     
     $scope.addSongToPlaylist = function(song) {

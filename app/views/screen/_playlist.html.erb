@@ -1,13 +1,18 @@
 <section class="playlist" ng-controller="PlaylistController">
   <header>
-    <button ng-click="playlist.list = []">Clear</button>
-    <button>Shuffle</button>
+    <button ng-click="playlist.list = []" title="Clear Playlist">
+      <i class="fa fa-remove"></i> Clear
+    </button>
+    <button title="Shuffle Playlist">
+      <i class="fa fa-random"></i> Shuffle
+    </button>
     <!-- <h1>Playlist</h1> -->
   </header>
   <ol dragula="'playlist'" dragula-model="songs">
     <li ng-repeat="song in playlist.list track by $index">
-      <div class="item" data-track="{{song.track}}" ng-class="{lit: song == player.song}" ng-click="playSong(song)">
-        {{song.title}}
+      <div class="item" data-track="{{song.track}}" ng-class="{lit: $index == player.songIndex}" ng-click="playSong(song, $index)">
+        <i class="fa fa-music"></i>
+        <span>{{song.title}}</span>
       </div>
       <button class="danger no-stretch" ng-click="removeSong($index)">
         <i class="fa fa-close"></i>

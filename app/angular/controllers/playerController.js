@@ -13,25 +13,25 @@ app.controller(
     
     $scope.playPause = function() {
       Player.playing = !Player.playing;
-      
-      if (Player.playing && !Player.song) Player.song = Playlist.list[0];
+      if (Player.playing && !Player.song) {
+        Player.song = Playlist.list[0];
+        Player.songIndex = 0;
+      }
     };
     
     $scope.previous = function() {
-      var songIndex = Playlist.list.indexOf(Player.song);
-      if (songIndex <= 0) {
-        Player.song = null;
+      if (Player.songIndex <= 0) {
+        Player.song = Player.songIndex = null;
       } else {
-        Player.song = Playlist.list[songIndex - 1];
+        Player.song = Playlist.list[--Player.songIndex];
       }
     };
     
     $scope.forward = function() {
-      var songIndex = Playlist.list.indexOf(Player.song);
-      if (songIndex >= Playlist.list.length) {
-        Player.song = null;
+      if (Player.songIndex >= Playlist.list.length) {
+        Player.song = Player.songIndex = null;
       } else {
-        Player.song = Playlist.list[songIndex + 1];
+        Player.song = Playlist.list[++Player.songIndex];
       }
     };
     

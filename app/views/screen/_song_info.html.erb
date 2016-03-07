@@ -1,0 +1,14 @@
+<div ng-controller="SongInfoController" ng-show="songInfo.song" class="song-info">
+  <div class="info-box">
+    <header>
+      <button ng-click="songInfo.song = null">
+        <i class="fa fa-close"></i>
+      </button>
+    </header>
+    <ul>
+      <li ng-repeat="(key, value) in songInfo.song">
+        {{ key }}: {{ value }}
+      </li>
+    </ul>
+  </div>
+</div>

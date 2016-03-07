@@ -1,41 +1,36 @@
 .playhead-container {
-  position: relative;
+  height: 10px;
+  display: flex;
+  align-items: center;
+  
+  &:hover {
+    .playhead {
+      height: 10px;
+      cursor: ew-resize;
+    
+      .playhead-progress {
+        border-radius: 5px;
+      }
+    }
+  }
 }
 
 .playhead {
-  $playhead-height: 4px;
-  $playhead-scale-factor: 2.5;
-  
-  height: $playhead-height;
+  height: 2px;
   background-color: black;
-  position: absolute;
-  bottom: 0;
-  width: 100%;
+  flex: 1 0 0;
   margin: 0px 20px;
   transition: 0.2s linear;
-  border-radius: ($playhead-height/2);
-//  overflow: hidden;
-  
-  &:hover {
-    height: ($playhead-height * $playhead-scale-factor);
-    cursor: ew-resize;
-    border-radius: (($playhead-height * $playhead-scale-factor) / 2);
-    
-    .playhead-progress {
-      border-radius: (($playhead-height * $playhead-scale-factor) / 2);
-    }
-  }
+  display: flex;
+  align-items: center;
   
   .playhead-progress {
-    position: absolute;
     z-index: 50;
-    top: 0;
-    left: 0;
     width: 50%;
     height: 100%;
     background-color: white;
     box-shadow: 0 0 10px rgba(yellow, 1);
-    border-radius: ($playhead-height / 2);
+    border-radius: 2px;
   }
 }
 
