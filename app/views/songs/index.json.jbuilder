@@ -8,9 +8,11 @@ json.array!(@songs) do |song|
     :album_id,
     :play_count,
     :digest,
-    :extension,
-    :created_at,
-    :updated_at
+    :extension
+  
+  json.created_at @song.created_at.to_f * 1000 if @song # convert to miliseconds
+  json.updated_at @song.updated_at.to_f * 1000 if @song # convert to miliseconds
+  
   
   unless @album and @album.id == song.album_id
     @album = song.album

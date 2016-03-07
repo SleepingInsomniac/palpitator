@@ -19,13 +19,21 @@ app.controller(
     $scope.playSong = function(song, index) {
       $scope.currentSong = song;
       Player.song = song;
-      // Player.artist = song.artist;
-      // Player.album = song.album;
       Player.songIndex = index;
     };
     
     $scope.removeSong = function(index) {
       Playlist.list.splice(index, 1);
+      if (Player.songIndex == index) {
+        Player.songIndex = null;
+        Player.song = null;
+      }
     };
     
+    $scope.clearPlaylist = function() {
+      Playlist.list = [];
+      Player.songIndex = null;
+      Player.song = null;
+    };
+  
 });

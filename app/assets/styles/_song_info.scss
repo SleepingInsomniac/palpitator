@@ -9,20 +9,28 @@
   align-items: center;
   justify-content: center;
   
+  pointer-events: none;
+  
+  //background-color: rgba(#000,0.3);
+  
   .info-box {
     display: flex;
     flex-direction: column;
-    background-color: black;
-    color: white;
+    background-color: white;
+    color: #555;
     border-radius: 3px;
     box-shadow: 0 0 10px rgba(#000,0.3);
     padding: 10px;
+    pointer-events: all;
     
     > * {
       flex: 1 0 0;
-      border: 1px dashed red;
       margin: 0;
       padding: 0;
+    }
+    
+    header {
+      text-align: right;
     }
   }
 }
