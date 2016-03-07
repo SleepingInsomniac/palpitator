@@ -46,6 +46,7 @@
 }
 
 .display {
+  position: relative;
   border: 1px solid gray;
   padding: 10px;
   display: flex;
@@ -64,6 +65,10 @@
     flex: 1 0 100%;
     margin: 0;
     padding: 0;
+  }
+  
+  .fa {
+    opacity: 0.3;
   }
 }
 

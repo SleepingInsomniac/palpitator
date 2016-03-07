@@ -76,6 +76,7 @@ main {
         ul, ol {
           border-top: 1px solid black;
           border-bottom: 5px solid black;
+          overflow-y: initial;
           
           li {
             padding-left: 2em;

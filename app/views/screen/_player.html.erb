@@ -3,10 +3,15 @@
   <div class="controls">
     <audio autoplay preload src="{{ player.song.path }}"></audio>
     <div class="display">
-      <h3>{{ player.song.title || 'Nothing Pulpitating' }}</h3>
+      
+      <div class="loading-indicator-container" ng-class="{hidden: requestCount <= 0}">
+        <div class="loading-indicator">&nbsp;</div>
+      </div>
+      
+      <h3><i class="fa fa-music"></i> {{ player.song.title || 'Nothing Pulpitating' }}</h3>
       <aside class="display-info">
         <span class="display-info-artist">{{ player.song.artist.name }}</span>
-        <span>:</span>
+        <span> - </span>
         <span class="display-info-album">{{ player.song.album.title }}</span>
       </aside>
     </div>
