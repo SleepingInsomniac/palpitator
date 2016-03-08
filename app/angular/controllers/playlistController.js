@@ -13,13 +13,13 @@ app.controller(
     dragulaService
   ) {
     
-    $scope.playlist = Playlist; //Song.byArtist({artist_id: 2});
+    $scope.playlist = Playlist;
     $scope.player = Player;
     
     $scope.playSong = function(song, index) {
-      $scope.currentSong = song;
       Player.song = song;
       Player.songIndex = index;
+      Player.play();
     };
     
     $scope.removeSong = function(index) {
@@ -32,8 +32,10 @@ app.controller(
     
     $scope.clearPlaylist = function() {
       Playlist.list = [];
+      Player.pause();
       Player.songIndex = null;
       Player.song = null;
+      console.log(Player);
     };
   
 });

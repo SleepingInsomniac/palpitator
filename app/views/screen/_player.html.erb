@@ -1,9 +1,16 @@
 <header class="player" ng-controller="PlayerController">
   <div class="speaker speaker-left">&nbsp;</div>
   <div class="controls">
-    <audio autoplay preload src="{{ player.song.path }}"></audio>
+
+    <audio
+      lx-audio="player"
+      autoplay
+      preload
+      ng-attr-src="{{ player.song.path }}"
+      ng-attr-type="{{ 'audio/'+player.song.extension.slice(1) }}">
+    </audio>
+    
     <div class="display">
-      
       <div class="loading-indicator-container" ng-class="{hidden: requestCount <= 0}">
         <div class="loading-indicator">&nbsp;</div>
       </div>
@@ -15,6 +22,7 @@
         <span class="display-info-album">{{ player.song.album.title }}</span>
       </aside>
     </div>
+    
     <div class="buttons">
       <button ng-click="previous()" class="player-btn btn-previous"><i class="fa fa-fast-backward"></i></button>
       <button ng-click="playPause()" class="player-btn btn-play">

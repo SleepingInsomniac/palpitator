@@ -1,5 +1,5 @@
 defaults: &defaults
-  audio_root: '/Users/alex/Music/iTunes/iTunes Media/Music'
+  audio_root: 'public/music'
 
 development:
   <<: *defaults

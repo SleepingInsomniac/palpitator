@@ -9,6 +9,10 @@ app.controller(
     Playlist
   ) {
     
+    $scope.audio = {
+      timeElapsed: 0
+    };
+    
     $scope.player = Player;
     
     $scope.playPause = function() {
@@ -17,6 +21,7 @@ app.controller(
         Player.song = Playlist.list[0];
         Player.songIndex = 0;
       }
+      Player.playing ? Player.play() : Player.pause();
     };
     
     $scope.previous = function() {

@@ -1,15 +1,19 @@
 require 'taglib'
 require 'digest/md5'
+require 'pathname'
 
 class LibraryController < ApplicationController
   def update
     audio_root = APP_CONFIG['audio_root']
+    unless File.exists? audio_root
+      render json: {
+        error: "#{audio_root} doesn't exist"
+      }, status: 500 and return
+    end
     not_added = []
     added = []
-    count = 0
-    puts "Added new songs at #{audio_root}"
+    
     Dir[File.join(audio_root, "**", "*")].reject { |d| File.directory? d }.each do |file|
-      count += 1
       TagLib::FileRef.open(File.expand_path(file)) do |ref|
         tag = ref.tag
         not_added << file and next unless tag
@@ -24,7 +28,7 @@ class LibraryController < ApplicationController
           album: album,
           length: ref.audio_properties.length,
           title: (tag.title || "Untitled #{tag.track}"),
-          path: File.expand_path(file),
+          path: Pathname.new(file).relative_path_from(Pathname.new("public")).to_s,
           extension: File.extname(file) # maybe check for real if you accept uploaded files
         )
         if song.save
@@ -32,9 +36,10 @@ class LibraryController < ApplicationController
         end
       end
     end
+    
     render json: {
       notice: 'done',
-      file_count: count,
+      file_count: not_added.count + added.count,
       not_added: not_added,
       added: added
     }
@@ -53,7 +58,6 @@ class LibraryController < ApplicationController
       artists: @artist_results,
       albums: @album_results
     }
-    
   end
   
 end
