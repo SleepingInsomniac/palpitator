@@ -5,7 +5,8 @@ function() {
   return {
     song: null,
     playlist: null,
-    playing: false
+    playing: false,
+    songIndex: null
   };
   
 });

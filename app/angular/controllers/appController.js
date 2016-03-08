@@ -5,9 +5,10 @@ app.controller(
     $http,
     $routeParams,
     $location,
-    User
+    User,
+    Player
   ) {
   
-  // bleh
+    $scope.player = Player;
   
 });

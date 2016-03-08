@@ -9,7 +9,8 @@ function() {
     link: function(scope, element, attrs) {
       
       element.on("timeupdate", function(){
-        scope.audio.timeElapsed = element[0].currentTime;
+        scope.audio.timeElapsed = parseInt(element[0].currentTime);
+        scope.$apply();
       });
       
       scope.audio.play = function() {
