@@ -24,11 +24,11 @@
     </div>
     
     <div class="buttons">
-      <button ng-click="previous()" class="player-btn btn-previous"><i class="fa fa-fast-backward"></i></button>
-      <button ng-click="playPause()" class="player-btn btn-play">
+      <button ng-click="player.previous()" class="player-btn btn-previous"><i class="fa fa-fast-backward"></i></button>
+      <button ng-click="player.playPause()" class="player-btn btn-play">
         <i class="fa" ng-class="{'fa-play': !player.playing, 'fa-pause': player.playing}"></i>
       </button>
-      <button ng-click="forward()" class="player-btn btn-next"><i class="fa fa-fast-forward"></i></button>
+      <button ng-click="player.forward()" class="player-btn btn-next"><i class="fa fa-fast-forward"></i></button>
     </div>
   </div>
   <div class="speaker speaker-right">&nbsp;</div>

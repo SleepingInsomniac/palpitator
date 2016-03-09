@@ -1,6 +1,6 @@
 app.directive(
 "lxAudio",
-function() {
+function(Player) {
   return {
     restrict: 'A',
     scope: {
@@ -8,9 +8,15 @@ function() {
     },
     link: function(scope, element, attrs) {
       
-      element.on("timeupdate", function(){
-        scope.audio.timeElapsed = parseInt(element[0].currentTime);
+      element.on("timeupdate", function() {
+        var time = element[0].currentTime;
+        scope.audio.timeElapsed = time;
+        scope.audio.playedPercent = Math.round((time / scope.audio.song.length * 100) * 10) / 10;
         scope.$apply();
+      });
+      
+      element.on("ended", function() {
+        Player.forward();
       });
       
       scope.audio.play = function() {
