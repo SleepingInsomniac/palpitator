@@ -11,7 +11,7 @@ function(Player) {
       element.on("timeupdate", function() {
         var time = element[0].currentTime;
         scope.audio.timeElapsed = time;
-        scope.audio.playedPercent = Math.round((time / scope.audio.song.length * 100) * 10) / 10;
+        Player.playedPercent = scope.audio.playedPercent = Math.round((time / scope.audio.song.length * 100) * 10) / 10;
         scope.$apply();
       });
       
@@ -28,6 +28,20 @@ function(Player) {
         element[0].pause();
         scope.audio.playing = false;
       };
+      
+      Player.currentTime = function(value) {
+        if (value) {
+          element[0].currentTime = value;
+        }
+        return element[0].currentTime;
+      }
+      
+      Player.timePercent = function(value) {
+        if (value) {
+          element[0].currentTime = scope.audio.song.length * value;
+        }
+        return element[0].currentTime / scope.audio.song.length;
+      }
       
     }
   };

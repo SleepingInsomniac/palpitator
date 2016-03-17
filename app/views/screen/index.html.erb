@@ -15,7 +15,11 @@
       
       <%= render partial: 'player.html' %>
       
-      <div class="playhead-container">
+      <div
+        ng-controller="PlayheadController"
+        class="playhead-container"
+        ng-mousedown="mousedown($event)">
+        
         <div class="playhead">
           <div class="playhead-progress" lx-width="player.playedPercent"></div>
         </div>
