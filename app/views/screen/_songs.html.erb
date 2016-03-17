@@ -8,7 +8,7 @@
   <ul>
     <li ng-repeat="album in selectedArtist.albums">
       <div>
-        <div ng-click="getSongs(album); album.showSongs = !album.showSongs" class="item">{{::album.title}}</div>
+        <div ng-click="getSongs(album); album.showSongs = !album.showSongs" class="item" ng-class="{lit: album.showSongs}">{{::album.title}}</div>
         <button ng-click="addAlbumToPlaylist(album)" class="success no-stretch">
           <i class="fa fa-plus"></i>
         </button>

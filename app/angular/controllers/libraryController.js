@@ -6,7 +6,8 @@ app.controller(
     Album,
     Song,
     SongInfo,
-    Playlist
+    Playlist,
+    Player
   ) {
     
     $scope.artists = Artist.query();
