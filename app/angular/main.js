@@ -1,4 +1,4 @@
-var app = angular.module('pulpitator', [
+var app = angular.module('palpitator', [
   'ngRoute',
   'ngResource',
   'ngSanitize',

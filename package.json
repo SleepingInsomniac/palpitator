@@ -1,5 +1,5 @@
 {
-  "name": "pulpitator",
+  "name": "palpitator",
   "version": "0.0.1",
   "description": "Browser based music player",
   "main": "gulpfile.js",

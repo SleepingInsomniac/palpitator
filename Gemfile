@@ -14,6 +14,8 @@ gem 'thin', :group => :development
 
 gem 'rails-erd'
 
+gem 'delayed_job_active_record'
+
 # Use unicorn as the app server
 # gem 'unicorn'
 
