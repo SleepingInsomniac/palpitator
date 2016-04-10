@@ -19,6 +19,7 @@ gulp.task('default', [
 
 gulp.task('build', [
   'files',
+  'images',
   // 'icons',
   'vendor',
   // 'markup',
