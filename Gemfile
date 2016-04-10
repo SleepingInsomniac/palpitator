@@ -9,11 +9,6 @@ gem 'taglib-ruby', '~> 0.7.1'
 gem 'bcrypt', '~> 3.1.7'
 gem 'jbuilder'
 
-gem 'spring', :group => :development
-gem 'thin', :group => :development
-
-gem 'rails-erd'
-
 gem 'delayed_job_active_record'
 
 # Use unicorn as the app server
@@ -22,5 +17,8 @@ gem 'delayed_job_active_record'
 # Deploy with Capistrano
 # gem 'capistrano', :group => :development
 
-# To use debugger
-# gem 'ruby-debug19', :require => 'ruby-debug'
+group :development do
+  gem 'spring'
+  gem 'thin'
+  gem 'rails-erd'
+end
