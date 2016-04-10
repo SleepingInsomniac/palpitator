@@ -1,0 +1,22 @@
+;(function() {
+  
+  app.factory('<%= class_name %>', <%= class_name %>);
+  
+  function <%= class_name %>($resource) {
+    return $resource('/<%= file_name %>/:id', {id:'@id'}, {
+      update: {
+        method: 'PUT',
+        transformRequest: function(data) {
+          return angular.toJson({<%= file_name %>: data});
+        }
+      },
+      create: {
+        method: 'POST',
+        transformRequest: function(data) {
+          return angular.toJson({<%= file_name %>: data});
+        }
+      }
+    });
+  }
+  
+}());

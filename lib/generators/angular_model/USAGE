@@ -1,0 +1,8 @@
+Description:
+    Generates an angular model
+
+Example:
+    rails generate angular_model Thing
+
+    This will create:
+        app/angular/models/thing.js
