@@ -11,6 +11,8 @@ gem 'jbuilder'
 
 gem 'delayed_job_active_record'
 
+gem 'daemons', '~> 1.2'
+
 # Use unicorn as the app server
 # gem 'unicorn'
 
