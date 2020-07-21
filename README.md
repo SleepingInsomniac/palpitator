@@ -1,6 +1,6 @@
 #Palpitator
 
-[![GitHub version](https://badge.fury.io/gh/SleepingInsomniac%2Fpulpitator.svg)](https://badge.fury.io/gh/SleepingInsomniac%2Fpulpitator)
+[![GitHub version](https://badge.fury.io/gh/SleepingInsomniac%2Fpalpitator.svg)](https://badge.fury.io/gh/SleepingInsomniac%2Fpalpitator)
 
 ##Cloud based music player
 
